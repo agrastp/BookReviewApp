@@ -17,7 +17,11 @@ const seedDatabase = async () => {
     await Book.bulkCreate(bookData);
 
     await Review.bulkCreate(reviewData);
+
+    process.exit(0);
 }
+
+seedDatabase();
 
 // Users:
 // ID
