@@ -22,27 +22,3 @@ const seedDatabase = async () => {
 }
 
 seedDatabase();
-
-// Users:
-// ID
-// Username
-// Password
-// Email
-
-// Reviews:
-// ID
-// Title
-// User-id
-// Book-Id
-// Content
-
-// Books:
-// ID
-// Title
-// Author
-// Publisher
-// Genre
-// Description
-// Review
-// Page_Num
-
