@@ -1,0 +1,23 @@
+<section id="login-container-outer">
+    <section id="login-container-inner">
+        <section id="title-container">
+            <h2>Log in</h2>
+        </section>
+
+        {{!-- I, Gabriel, reused most of this code from my module 14 challenge.--}}
+        <label for="username" class="d-block  ml-2">Username:</label>
+        <input type="text" id="username" class="col-9 d-block ml-2">
+        <label for="password"class="d-block mt-2 ml-2">Password:</label>
+        <input type="password" id="password" class="col-9 d-block  ml-2">
+        <button id="log-in-sign-up-button" class="col-9 ml-2 mt-2">Log In!!!</button>
+        {{#if ( equals logInOrSignUp "Log In!")}}
+            <a href="/signup" id="log-in-or-sign-up-instead"class="d-block ml-2 mt-2">{{{logInOrSignUpInstead}}}</a>
+        {{/if}}
+
+        {{#if ( equals logInOrSignUp "Sign Up!")}}
+            <a href="/login" id="log-in-or-sign-up-instead" class="d-block ml-2 mt-2">{{{logInOrSignUpInstead}}}</a>
+        {{/if}}
+
+        <p id="error-message" class="text-center text-danger">{{{errorMessage}}}</p>
+    </section>
+</section>
