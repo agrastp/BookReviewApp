@@ -8,9 +8,9 @@ router.post('/', async (req, res) => {
       author: req.body.author,
       genre: req.body.genre,
       description: req.body.description,
-      number_of_pages: req.body.number_of_pages,
+      page_num: req.body.page_num,
     });
-    // if the dish is successfully created, the new response will be returned as json
+
     res.status(200).json(bookData)
   } catch (err) {
     res.status(400).json(err);
