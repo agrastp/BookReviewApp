@@ -7,7 +7,7 @@ const { Book, Review } = require('../models');
 router.get('/', async (req, res) => {
     try {
         const bookData = await Book.findAll({
-            order: [['name', 'ASC']],
+            order: [['title', 'ASC']],
         });
 
         const books = bookData.map((book) => book.get({ plain: true }));
