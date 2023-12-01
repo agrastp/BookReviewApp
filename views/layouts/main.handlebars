@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <meta charset= "UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link
-            rel="stylesheet" 
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        >
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/css/style.css">
-        <title>Book Review Application</title>
-    </head>
-    <body>
-        <section id="navbar-section">
-            <nav class="navbar col-3 justify-content-between">
-                <a href="/" id="home-link"> Home Page</a>
+<head>
+    <meta charset= "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link
+        rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    >
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Book Review Application</title>
+</head>
+
+<body>
+    <header class="box custom-header">
+        <div id="navbar-section">
+            {{!-- col-3 justify-content-between --}}
+            <nav class="navbar-item is-arrowless custom-navbar">
+                <a href="/" id="home-link">Home</a>
                 <a href="/create-review" id="dashboard-link">Dashboard</a>
-                <a id="login-logout-link"></a>
+                {{#if logged-in}}
+                <button id="logout-link" class="custom-login-logout-button">Logout</button>
+                {{else}}
+                <a id="login-link" href="/login" class="button custom-login-logout-button">Login</a>
+                {{/if}}
             </nav>
+        </div>
+
+        <section id="main-header hero">
+            <div class="hero-head">
+                <h1 class="title custom-title">Book Review Application</h1>
+            </div>
         </section>
-        <section id="main-heading">
-            <h1>Book Review Application</h1>
-        </section>
-        <main>
-            {{{body}}}
-        </main>
-    </body>
+    </header>
+
+    <main>
+        {{{body}}}
+    </main>
+</body>
 </html>

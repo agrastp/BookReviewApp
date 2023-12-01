@@ -1,0 +1,16 @@
+.custom-navbar a {
+    margin-right: 2%;
+}
+
+.custom-login-logout-button {
+    text-align: right;
+}
+
+.custom-title {
+    text-align: center;
+    padding: 30px;
+}
+
+.custom-header {
+    background-color: rgb(250, 232, 210);
+}
