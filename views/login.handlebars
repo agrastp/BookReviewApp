@@ -1,23 +1,42 @@
-<section id="login-container-outer">
-    <section id="login-container-inner">
-        <section id="title-container">
-            <h2>Log in</h2>
-        </section>
+<section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-6-desktop is-6-tablet is-6-widescreen">
+                    <div class="has-background-dark custom-top-left-right-border-radius">
+                        <h2 class="title is-4 has-text-white has-text-centered custom-padding-4">Login</h2>
+                    </div>
+                    <form class="box">
+                        <div class="field">
+                            <label for="email" class="">Email:</label>
+                            <div class="control has-icons-left">
+                                <input type="email" id="email-login" placeholder="e.g. mike@gmail.com" class="input">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="" class="label">Password</label>
+                            <div class="control has-icons-left">
+                                <input type="password" id="password-login" placeholder="e.g. password" class="input" required>
+                                <span class="icon is-small is-left">
+                                <i class="fa fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field custom-margin-top-5">
+                            <button id="login-submit" class="button is-success">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        {{!-- I, Gabriel, reused most of this code from my module 14 challenge.--}}
-        <label for="username" class="d-block  ml-2">Username:</label>
-        <input type="text" id="username" class="col-9 d-block ml-2">
-        <label for="password"class="d-block mt-2 ml-2">Password:</label>
-        <input type="password" id="password" class="col-9 d-block  ml-2">
-        <button id="log-in-sign-up-button" class="col-9 ml-2 mt-2">Log In!!!</button>
-        {{#if ( equals logInOrSignUp "Log In!")}}
-            <a href="/signup" id="log-in-or-sign-up-instead"class="d-block ml-2 mt-2">{{{logInOrSignUpInstead}}}</a>
-        {{/if}}
+    <div class="has-text-centered">
+        <h4>Don't have an account? <a id="signup-redirect" href="/signup" class="">Click here</a></h4>
+    </div>
+</section>  
 
-        {{#if ( equals logInOrSignUp "Sign Up!")}}
-            <a href="/login" id="log-in-or-sign-up-instead" class="d-block ml-2 mt-2">{{{logInOrSignUpInstead}}}</a>
-        {{/if}}
-
-        <p id="error-message" class="text-center text-danger">{{{errorMessage}}}</p>
-    </section>
-</section>
+<script src="/js/login.js"></script>
