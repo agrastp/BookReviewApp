@@ -14,3 +14,15 @@
 .custom-header {
     background-color: rgb(250, 232, 210);
 }
+
+.custom-top-left-right-border-radius {
+    border-radius: 5px 5px 0 0;
+}
+
+.custom-padding-4 {
+    padding: 4px;
+}
+
+.custom-margin-top-5 {
+    margin-top: 5%;
+}
