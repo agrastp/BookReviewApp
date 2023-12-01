@@ -58,6 +58,25 @@ router.get('/review/:id', async (req, res) => {
       };     
 });
 
+// Villy: render the login page
+router.get('/login', async (req, res) => {
+    try {
+        res.render('login');
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// Villy: render the signup page
+router.get('/signup', async (req, res) => {
+    try {
+        res.render('signup');
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 module.exports = router;
