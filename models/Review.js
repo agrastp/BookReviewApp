@@ -6,7 +6,6 @@ class Review extends Model {}
 Review.init(
     {
         id: {
-
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
@@ -22,22 +21,16 @@ Review.init(
             allowNull: false
         },
         user_id: {
-
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
-
-                model: 'User',
+                model: 'user',
                 key: 'id'
             }
         },
         book_id: {
-
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
-
-                model: 'Book',
+                model: 'book',
                 key: 'id'
             }
         }
@@ -45,9 +38,9 @@ Review.init(
     {
         sequelize,
         timestamps: true,
-        freezeTableName: false,
+        freezeTableName: true,
         underscored: true,
-        modelName: 'Review',
+        modelName: 'review',
     }
 )
 
