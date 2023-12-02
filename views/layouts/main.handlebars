@@ -17,7 +17,7 @@
 
 <body>
     <header class="box custom-header">
-        <div id="navbar-section">
+        <section id="navbar-section">
             {{!-- col-3 justify-content-between --}}
             <nav class="navbar-item is-arrowless custom-navbar">
                 <a href="/" id="home-link">Home</a>
@@ -28,12 +28,16 @@
                 <a id="login-link" href="/login" class="button custom-login-logout-button">Login</a>
                 {{/if}}
             </nav>
-        </div>
-
+        </section>
+        <section id="welcome-bar" class="medium-text">
+            {{#if loggedInUsername}}
+                <p id="welcome-line" class="d-block">Welcome, <b>{{{loggedInUsername}}}</b></p>
+            {{/if}}
+        </section>
         <section id="main-header hero">
-            <div class="hero-head">
+            <section class="hero-head">
                 <h1 class="title custom-title">Book Review Application</h1>
-            </div>
+            </section>
         </section>
     </header>
 

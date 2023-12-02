@@ -1,10 +1,15 @@
+let passport = require('passport');
+let User = require('../../models/User')
+
+let  username = document.querySelector('#username-input').value.trim();
+let password = document.querySelector('#password-input').value.trim();
+
 const loginFormHandler = async (e) => {
     e.preventDefault();
 
-    const email = document.querySelector('#email-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
 
-    if (email && password) {
+
+    if (username && password) {
         const response = await fetch('/api/users/login', {
             method: 'POST',
             body: JSON.stringify({email, password}),
@@ -23,9 +28,7 @@ const loginFormHandler = async (e) => {
 const signupFormHandler = async (e) => {
     e.preventDefault();
 
-    const name = document.querySelector('#name-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
+    const email = document.querySelector('#email-input').value.trim();
 
     if (name && email && password) {
         const response = await fetch('api/users', {
@@ -35,7 +38,7 @@ const signupFormHandler = async (e) => {
         })
 
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/dashboard');
         }
         else {
             alert(response.statusText);
@@ -43,5 +46,5 @@ const signupFormHandler = async (e) => {
     }
 };
 
-document.querySelector('#login-submit').addEventListener('submit', loginFormHandler);
-document.querySelector('#signup-submit').addEventListener('submit', signupFormHandler);
+document.querySelector('#login-signup-button').addEventListener('submit', loginFormHandler);
+//document.querySelector('#signup-submit').addEventListener('submit', signupFormHandler);

@@ -15,6 +15,8 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+
+
 });
 
 // GET one book
@@ -63,7 +65,13 @@ router.get('/review/:id', async (req, res) => {
 // Villy: render the login page
 router.get('/login', async (req, res) => {
     try {
-        res.render('login');
+        res.set('Cache-Control', 'no-store');
+        res.render('login-signup', {
+
+            
+            loggedInUser: req.session.loggedInUsername,
+            logInOrSignUp: "Log In"
+        });
     }
     catch (err) {
         res.status(500).json(err);
@@ -73,7 +81,14 @@ router.get('/login', async (req, res) => {
 // Villy: render the signup page
 router.get('/signup', async (req, res) => {
     try {
-        res.render('signup');
+
+        res.set('Cache-Control', 'no-store');
+        res.render('login-signup', {
+
+            
+            logInOrSignUp: "Sign Up",
+            loggedInUser: req.session.loggedInUsername
+        })
     }
     catch (err) {
         res.status(500).json(err);

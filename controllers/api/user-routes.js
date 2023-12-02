@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const bcrypt = require('bcrypt');
+
 
 // CREATE new user
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
     const dbUserData = await User.create({
       username: req.body.username,
@@ -13,6 +15,7 @@ router.post('/', async (req, res) => {
     // Set up sessions with a 'loggedIn' variable set to `true`
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.loggedInUsername = req.body.username;
 
       res.status(200).json(dbUserData);
     });
@@ -27,18 +30,18 @@ router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
       where: {
-        email: req.body.email,
+        username: req.body.username,
       },
     });
 
-   
+    let validUser = dbUserData.get({plain: true});
 
-    if (!dbUserData) {
+    if (!validUser) {
       res.status(400).json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
 
-    const validPassword = await dbUserData.checkPassword(req.body.password);
+    let validPassword = await bcrypt.compare(req.body.password, validUser.password)
 
    
     if (!validPassword) {
@@ -51,6 +54,7 @@ router.post('/login', async (req, res) => {
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.loggedInUsername = req.body.username;
 
       res
         .status(200)
