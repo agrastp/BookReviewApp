@@ -22,15 +22,15 @@
             <nav class="navbar-item is-arrowless custom-navbar">
                 <a href="/" id="home-link">Home</a>
                 <a href="/create-review" id="dashboard-link">Dashboard</a>
-                {{#if logged-in}}
-                <button id="logout-link" class="custom-login-logout-button">Logout</button>
+                {{#if loggedInUser}}
+                <a id="login-link" href="/api/users/logout" class="custom-login-logout-button">Logout</button>
                 {{else}}
                 <a id="login-link" href="/login" class="button custom-login-logout-button">Login</a>
                 {{/if}}
             </nav>
         </section>
         <section id="welcome-bar" class="medium-text">
-            {{#if loggedInUsername}}
+            {{#if loggedInUser}}
                 <p id="welcome-line" class="d-block">Welcome, <b>{{{loggedInUsername}}}</b></p>
             {{/if}}
         </section>

@@ -10,9 +10,6 @@ module.exports = {
 
     equals: (argumentOne, argumentTwo) => {
 
-        console.log(argumentOne);
-        console.log(argumentTwo);
-
         if(argumentOne === argumentTwo){
 
             return true;

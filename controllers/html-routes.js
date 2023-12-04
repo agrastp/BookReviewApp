@@ -66,10 +66,24 @@ router.get('/review/:id', async (req, res) => {
 router.get('/login', async (req, res) => {
     try {
         res.set('Cache-Control', 'no-store');
+
+        let errorMessage = "";
+        
+        if(req.query.valid === "false"){
+
+            errorMessage = "Your username or password is incorrect.  Try again!!";
+        
+        } else if (req.query.nullField === "true"){
+
+            errorMessage = "You must enter both the username and the password.  Try again!!";
+        
+        }
+        
+
         res.render('login-signup', {
 
-            
-            loggedInUser: req.session.loggedInUsername,
+            errorMessage,
+            loggedInUser: req.session.loggedInUser,
             logInOrSignUp: "Log In"
         });
     }
@@ -88,6 +102,24 @@ router.get('/signup', async (req, res) => {
             
             logInOrSignUp: "Sign Up",
             loggedInUser: req.session.loggedInUsername
+        })
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/dashboard', async (req, res) => {
+    
+    
+    try {
+
+        res.set('Cache-Control', 'no-store');
+        res.render('dashboard', {
+
+        
+            loggedInUser: req.session.loggedInUser,
+            loggedInUsername: req.session.loggedInUser.username
         })
     }
     catch (err) {

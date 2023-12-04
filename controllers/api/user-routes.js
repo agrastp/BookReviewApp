@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const passport = require('../../utils/authentication.js')
 const bcrypt = require('bcrypt');
+const { sessionSaveWithPromise } = require('../../utils/session-promise-functions.js');
+//const crypto = require('crypto');
 
 
 // CREATE new user
@@ -25,53 +28,42 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+
+
 // Login
-router.post('/login', async (req, res) => {
-  try {
-    const dbUserData = await User.findOne({
-      where: {
-        username: req.body.username,
-      },
-    });
+router.post('/login', passport.authenticate('local'), async  (req, res) => {
 
-    let validUser = dbUserData.get({plain: true});
+if(req.nullField === true){
 
-    if (!validUser) {
-      res.status(400).json({ message: 'Incorrect email or password. Please try again!' });
-      return;
-    }
+    res.redirect('/login?field=null');
 
-    let validPassword = await bcrypt.compare(req.body.password, validUser.password)
+} else if(req.invalidCredentials === true){
 
-   
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
-      return;
-    }
+    res.redirect('/login?valid=false');
 
-    // Once the user successfully logs in, set up the sessions variable 'loggedIn'
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      req.session.loggedInUsername = req.body.username;
+} else if(req.loggedInUser){
 
-      res
-        .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+    req.session.loggedInUser = req.loggedInUser
+    await sessionSaveWithPromise(req);
+
+    res.redirect('/dashboard');
+}
+
 });
 
 // Logout
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
+
   // When the user logs out, destroy the session
-  if (req.session.loggedIn) {
+  res.set('Cache-Control', 'no-store');
+
+  req.session.loggedInUser
+
+  if (req.session.loggedInUser) {
+
     req.session.destroy(() => {
-      res.status(204).end();
+
+        res.redirect(301, '/login');
     });
   } else {
     res.status(404).end();

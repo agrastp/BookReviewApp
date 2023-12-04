@@ -10,7 +10,7 @@
                         <section class="field">
                             <label for="username-input" class="">Username:</label>
                             <section class="control has-icons-left">
-                                <input type="text" id="username-input" class="input">
+                                <input type="text" id="username-input" class="input" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-envelope"></i>
                                 </span>
@@ -37,7 +37,12 @@
                             </section>
                         </section>
                         <section class="field custom-margin-top-5">
-                            <button id="login-signup-button" class="button is-success">Login</button>
+                            {{#if (equals logInOrSignUp "Log In")}}
+                                <button id="login-signup-button" class="button is-success">Log In!</button>
+                            {{/if}}
+                            {{#if (equals logInOrSignUp "Sign Up")}}
+                                <button id="login-signup-button" class="button is-success">Sign Up!</button>
+                            {{/if}}
                         </section>
                         {{#if (equals logInOrSignUp "Log In")}}
                         <section>
@@ -50,10 +55,13 @@
                             </section>
                         {{/if}}
                     </form>
+                    <section>
+                        <p id="error-message">{{{errorMessage}}}</p>
+                    </section>
                 </section>
             </section>
         </section>
     </section>
 </section>  
 
-<script src="/js/login.js"></script>
+<script src="/js/login-signup.js" defer></script>
