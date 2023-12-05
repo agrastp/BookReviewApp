@@ -18,7 +18,6 @@ router.get('/', async (req, res) => {
         }); 
         
       
-
     } catch (err) {
         res.status(500).json(err);
     }
@@ -26,7 +25,7 @@ router.get('/', async (req, res) => {
 
 });
 
-// GET one book
+// GET one book by ID
 router.get('/books/:id', async (req, res) => {
     try {
         const bookData = await Book.findByPk(req.params.id);
@@ -35,7 +34,6 @@ router.get('/books/:id', async (req, res) => {
             return;
         }
         const books = bookData.get({ plain: true });
-        // res.status(200).json(books);
         res.render('books', {books});
     } catch (err) {
         res.status(500).json(err);
@@ -53,7 +51,7 @@ router.get('/review', async (req, res) => {
     // res.status(200).json(review);
 });
 
-// GET one review
+// GET one review by ID
 router.get('/review/:id', async (req, res) => {
     try{ 
         const reviewData = await Review.findByPk(req.params.id);
@@ -63,13 +61,12 @@ router.get('/review/:id', async (req, res) => {
         }
         const review = reviewData.get({ plain: true });
         res.render('review', review);
-        // res.status(200).json(review);
       } catch (err) {
           res.status(500).json(err);
       };     
 });
 
-// Villy: render the login page
+//Renders the login page
 router.get('/login', async (req, res) => {
     try {
         res.set('Cache-Control', 'no-store');
@@ -86,7 +83,6 @@ router.get('/login', async (req, res) => {
         
         }
         
-
         res.render('login-signup', {
 
             errorMessage,
@@ -99,7 +95,7 @@ router.get('/login', async (req, res) => {
     }
 });
 
-// Villy: render the signup page
+//Renders the signup page
 router.get('/signup', async (req, res) => {
     try {
 
@@ -133,6 +129,7 @@ router.get('/signup', async (req, res) => {
     }
 });
 
+//Renders the dashboard 
 router.get('/dashboard', async (req, res) => {
     
 

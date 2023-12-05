@@ -1,3 +1,4 @@
+//Login or sign up 
 
 let loginSignupButton = document.getElementById('login-signup-button');
 

@@ -1,6 +1,7 @@
+//Create a review page
+
 const buttons = document.querySelectorAll('.add-review-button-homepage');
 
-// Villy: determined the ID
 const redirectToCreateReview = (event) => {
     
     event.preventDefault();
