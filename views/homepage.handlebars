@@ -4,9 +4,13 @@
         <figure class="book-images">
             {{!-- Villy: will need to change this to fit the cover --}}
             <img class="image is-128x128">
+            {{!-- Villy: Is loggedInUser the logged_in value? --}}
+            {{#if loggedInUser}}
             <button class="add-review-button-homepage button is-small">+</button>
+            {{/if}}
         </figure>
         
+        {{!-- line 13 to line 28 will be changed to fit small screen --}}
         <section class="book-lists columns">
             <div class="column is-2">
                 <li>Title:</li>

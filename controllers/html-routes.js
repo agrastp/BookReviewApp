@@ -144,5 +144,18 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
+// Villy: sorry I don't know how the passport tool works,
+//        can you make this route go through the passport verification?
+router.get('/create-review', async (req, res) => {
+    try {
+        res.render('create-review', {
+            loggedInUser: req.session.loggedInUser,
+            loggedInUsername: req.session.loggedInUser.username
+        })
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 module.exports = router;
