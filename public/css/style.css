@@ -26,3 +26,26 @@
 .custom-margin-top-5 {
     margin-top: 5%;
 }
+
+.custom-books-section {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.book-lists {
+    margin: 3%;
+}
+
+.book-lists li {
+    list-style: none;
+}
+
+.book-description-box {
+    border-top: solid black 1px;
+    margin: 3%;
+    padding-top: 3%;
+}
+
+.book-images {
+    margin: 3%;
+}

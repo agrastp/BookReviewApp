@@ -10,11 +10,13 @@ router.get('/', async (req, res) => {
             order: [['title', 'ASC']],
         });
         const books = bookData.map((book) => book.get({ plain: true }));
-        res.render('homepage', books ); 
+        res.render('homepage', {books}); 
         // res.status(200).json(books);
     } catch (err) {
         res.status(500).json(err);
     }
+
+
 });
 
 // GET one book
@@ -27,7 +29,7 @@ router.get('/books/:id', async (req, res) => {
         }
         const books = bookData.get({ plain: true });
         // res.status(200).json(books);
-        res.render('books', books);
+        res.render('books', {books});
     } catch (err) {
         res.status(500).json(err);
     };
@@ -39,8 +41,8 @@ router.get('/review', async (req, res) => {
     const reviewData = await Review.findAll().catch((err) => {
         res.json(err);
     });
-    const review = reviewData.map((review) => review.get({ plain: true }));
-    res.render('all', reviews);
+    const reviews = reviewData.map((review) => review.get({ plain: true }));
+    res.render('all', {reviews});
     // res.status(200).json(review);
 });
 
@@ -63,7 +65,27 @@ router.get('/review/:id', async (req, res) => {
 // Villy: render the login page
 router.get('/login', async (req, res) => {
     try {
-        res.render('login');
+        res.set('Cache-Control', 'no-store');
+
+        let errorMessage = "";
+        
+        if(req.query.valid === "false"){
+
+            errorMessage = "Your username or password is incorrect.  Try again!!";
+        
+        } else if (req.query.nullField === "true"){
+
+            errorMessage = "You must enter both the username and the password.  Try again!!";
+        
+        }
+        
+
+        res.render('login-signup', {
+
+            errorMessage,
+            loggedInUser: req.session.loggedInUser,
+            logInOrSignUp: "Log In"
+        });
     }
     catch (err) {
         res.status(500).json(err);
@@ -73,7 +95,49 @@ router.get('/login', async (req, res) => {
 // Villy: render the signup page
 router.get('/signup', async (req, res) => {
     try {
-        res.render('signup');
+
+        res.set('Cache-Control', 'no-store');
+        let errorMessage = "";
+        
+        if(req.query.invalidUsername === "true"){
+
+            errorMessage = "A username can only contain letters and numbers.  Try again!!";
+        
+        } else if(req.query.duplicateUser === "true"){
+
+            errorMessage = "This username is already taken.  Try again!!";
+        
+        } else if (req.query.nullField === "true"){
+
+            errorMessage = "You must enter both the username and the password.  Try again!!";
+        
+        }
+        
+        res.render('login-signup', {
+
+            errorMessage,
+
+            logInOrSignUp: "Sign Up",
+            loggedInUser: req.session.loggedInUsername
+        })
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/dashboard', async (req, res) => {
+    
+
+    try {
+
+        res.set('Cache-Control', 'no-store');
+        res.render('dashboard', {
+
+        
+            loggedInUser: req.session.loggedInUser,
+            loggedInUsername: req.session.loggedInUser.username
+        })
     }
     catch (err) {
         res.status(500).json(err);

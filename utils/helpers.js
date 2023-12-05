@@ -19,4 +19,10 @@ module.exports = {
             return false;
         }
     },
+
+    generateUuid:() => {
+
+        let uuid = uuidv4();
+        return uuid;
+    }
 }

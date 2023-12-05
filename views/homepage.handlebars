@@ -1,9 +1,31 @@
-<section id="books-section">
+<section id="books-section" class="container">
 {{#each books as |book|}}
-    <section id="{{{generateUuid}}}">
-        <p id="book-title"></p>
-            
-        <p id="book-text"></p>
+    <section id="{{{generateUuid}}}" class="custom-books-section box">
+        <figure class="book-images">
+            {{!-- Villy: will need to change this to fit the cover --}}
+            <img class="image is-128x128">
+        </figure>
+        
+        <section class="book-lists columns">
+            <div class="column is-3">
+                <li>Title:</li>
+                <li>Author: </li>
+                <li>Genre: </li>
+                <li>Page Numbers:</li>
+            </div>
+
+            <aside class="column">
+                <li class="book-title">{{book.title}}</li>
+                <li class="book-author">{{book.author}}</li>
+                <li class="book-genre">{{book.genre}}</li>
+                <li class="book-page_num">{{book.page_num}}</li>
+            </aside>
+        </section>
+
+        <section class="book-description-box">
+            <p class="book-description">{{book.description}}</p>   
+        </section>
     </section>
-</section>
 {{/each}}
+</section>
+

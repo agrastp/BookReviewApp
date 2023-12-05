@@ -8,6 +8,9 @@ const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+const passport = require('passport');
+const serialize = require('./utils/serialize-deserialize');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -33,11 +36,17 @@ app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+app.use(passport.initialize());
+app.use(passport.session());
+//serialize(passport);
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
+
+
 
 sequelize.sync({force: false}).then(() => {
     app.listen(PORT, () => {

@@ -16,18 +16,23 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        email: {
+            type: DataTypes.STRING,
+            isUnique: true,
+            allowNull: true,
+            validate: {
+                isEmail: true
+            }
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        email: {
+        salt: {
+
             type: DataTypes.STRING,
-            isUnique: true,
-            allowNull: false,
-            validate: {
-                isEmail: true
-            }
-        }
+            allowNull: false
+        },
     }, 
     {
         sequelize,
