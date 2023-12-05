@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Book, Review } = require('../models');
+const { Book, Review, User } = require('../models');
 // Import the custom middleware
 // const withAuth = require('../utils/auth'); 
 
@@ -147,5 +147,26 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
+// Villy: sorry I don't know how the passport tool works,
+//        can you make this route go through the passport verification?
+router.get('/create-review/:id', async (req, res) => {
+    try {
+        console.log(req.params);
+        const bookData = await Book.findByPk(req.params.id);
+        
+        const book = bookData.get({plain: true});
+        console.log(book);
+
+        res.render('create-review', {
+            ...book,
+            // Villy: does these determined if you are logged in
+            // loggedInUser: req.session.loggedInUser,
+            // loggedInUsername: req.session.loggedInUser.username
+        });
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 module.exports = router;
