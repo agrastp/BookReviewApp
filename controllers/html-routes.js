@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
             order: [['title', 'ASC']],
         });
         const books = bookData.map((book) => book.get({ plain: true }));
-        res.render('homepage', books ); 
+        res.render('homepage', {books}); 
         // res.status(200).json(books);
     } catch (err) {
         res.status(500).json(err);
@@ -29,7 +29,7 @@ router.get('/books/:id', async (req, res) => {
         }
         const books = bookData.get({ plain: true });
         // res.status(200).json(books);
-        res.render('books', books);
+        res.render('books', {books});
     } catch (err) {
         res.status(500).json(err);
     };
@@ -41,8 +41,8 @@ router.get('/review', async (req, res) => {
     const reviewData = await Review.findAll().catch((err) => {
         res.json(err);
     });
-    const review = reviewData.map((review) => review.get({ plain: true }));
-    res.render('all', reviews);
+    const reviews = reviewData.map((review) => review.get({ plain: true }));
+    res.render('all', {reviews});
     // res.status(200).json(review);
 });
 
