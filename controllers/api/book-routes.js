@@ -9,6 +9,7 @@ router.post('/', async (req, res) => {
       genre: req.body.genre,
       description: req.body.description,
       page_num: req.body.page_num,
+      image_path: req.body.image_path,
     });
 
     res.status(200).json(bookData)
