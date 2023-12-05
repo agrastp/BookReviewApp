@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Book, Review } = require('../models');
 // Import the custom middleware
-// const withAuth = require('../utils/auth'); Do we need this?
+// const withAuth = require('../utils/auth'); 
 
 // GET all books for homepage sorted by name
 router.get('/', async (req, res) => {
@@ -10,8 +10,11 @@ router.get('/', async (req, res) => {
             order: [['title', 'ASC']],
         });
         const books = bookData.map((book) => book.get({ plain: true }));
-        res.render('homepage', {books}); 
-        // res.status(200).json(books);
+      
+        res.render('homepage', books ); 
+        res.status(200).json(books);
+      
+
     } catch (err) {
         res.status(500).json(err);
     }

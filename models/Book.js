@@ -25,13 +25,17 @@ Book.init(
             allowNull: false
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT('long'),
             allowNull: false
         },
         page_num: {
             type: DataTypes.INTEGER,
             allowNull: false
-        }
+        },
+        image_path: {
+            type: DataTypes.BLOB('long'), 
+            allowNull: false
+        },
     },
     {
         sequelize,
