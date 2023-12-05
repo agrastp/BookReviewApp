@@ -2,51 +2,65 @@
     {
         "username": "George",
         "email": "george@gmail.com",
-        "password": "georgepassword"
+        "password": "georgepassword",
+        "salt": "8c58ca8e-fc5a-4c7e-8976-4cee9eaaea59"
+        
     },
     {
         "username": "Mike",
         "email": "mike@gmail.com",
-        "password": "mikepassword"
+        "password": "mikepassword",
+        "salt": "619bae4a-d20b-4aed-a047-a40c717bd910"
     },
     {
         "username": "Ted",
         "email": "ted@gmail.com",
-        "password": "tedpassword"
+        "password": "tedpassword",
+        "salt": "032e70d0-eb00-471e-8830-087ccb85021a"
+        
     },
     {
         "username": "Ben",
         "email": "ben@gmail.com",
-        "password": "benpassword"
+        "password": "benpassword",
+        "salt": "31dc85d4-17b1-4325-a05f-05e51a245f1c"
     },
     {
         "username": "Alice",
         "email": "alice@gmail.com",
-        "password": "alicepassword"
+        "password": "alicepassword",
+        "salt": "55f928c0-1b54-495a-a636-2bedc7b8e590"
+        
     },
     {
         "username": "Natalie",
         "email": "natalie@gmail.com",
-        "password": "nataliepassword"
+        "password": "nataliepassword",
+        "salt": "7988f618-0ea4-4dad-8219-eea444709b14"
     },
     {
         "username": "Anna",
         "email": "anna@gmail.com",
-        "password": "annapassword"
+        "password": "annapassword",
+        "salt": "d60c0ba6-0344-491f-a12e-a92055385ac0"
     },
     {
         "username": "Pamela",
         "email": "pamela@gmail.com",
-        "password": "pamelapassword"
+        "password": "pamelapassword",
+        "salt": "bb375e70-b471-4e0f-82be-5b5130d19e77"
     },
     {
         "username": "Gabriel",
         "email": "gabriel@gmail.com",
-        "password": "gabrielpassword"
+        "password": "demo",
+        "salt": "27910f8d-4095-4937-9f63-4590a2aac51b"
+
     },
     {
         "username": "Villy",
         "email": "villy@gmail.com",
-        "password": "villypassword"
+        "password": "villypassword",
+        "salt": "eb44e902-09be-4046-bcd8-7da91ec14fb8"
     }
 ]

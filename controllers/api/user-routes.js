@@ -1,73 +1,90 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+//const { User } = require('../../models');
+const passport = require('../../utils/authentication-for-login.js');
+const passport2 = require('../../utils/authentication-for-signup.js');
+const bcrypt = require('bcrypt');
+const { sessionSaveWithPromise } = require('../../utils/session-promise-functions.js');
+//const crypto = require('crypto');
+
 
 // CREATE new user
-router.post('/', async (req, res) => {
-  try {
-    const dbUserData = await User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    });
+router.post('/signup', passport2.authenticate('signup'), async (req, res) => {
+    try {
 
-    // Set up sessions with a 'loggedIn' variable set to `true`
-    req.session.save(() => {
-      req.session.loggedIn = true;
+            if(req.invalidUsername === "true"){
 
-      res.status(200).json(dbUserData);
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+            res.redirect('/signup?invalidUsername=true');
+
+        } else if(req.duplicateUser === "true"){
+
+            res.redirect('/signup?duplicateUser=true');
+
+        } else if(req.loggedInUser){
+
+            req.session.loggedInUser = req.loggedInUser
+            await sessionSaveWithPromise(req);
+
+            res.redirect('/dashboard');
+        }
+        // const dbUserData = await User.create({
+        //   username: req.body.username,
+        //   email: req.body.email,
+        //   password: req.body.password,
+        // });
+
+        // // Set up sessions with a 'loggedIn' variable set to `true`
+        // req.session.save(() => {
+        //   req.session.loggedIn = true;
+        //   req.session.loggedInUsername = req.body.username;
+
+        //   res.status(200).json(dbUserData);
+        // });
+    } catch (err) {
+
+        console.log(err);
+        res.status(500).json(err);
+    }
 });
 
+
+
 // Login
-router.post('/login', async (req, res) => {
-  try {
-    const dbUserData = await User.findOne({
-      where: {
-        email: req.body.email,
-      },
-    });
+router.post('/login', passport.authenticate('login'), async  (req, res) => {
 
-   
+    try {
 
-    if (!dbUserData) {
-      res.status(400).json({ message: 'Incorrect email or password. Please try again!' });
-      return;
+        if(req.invalidCredentials === "true"){
+
+            res.redirect('/login?valid=false');
+
+        } else if(req.loggedInUser){
+
+            req.session.loggedInUser = req.loggedInUser
+            await sessionSaveWithPromise(req);
+
+            res.redirect('/dashboard');
+        }
+
+    } catch (error) {
+
+        console.log(error);
+        res.status(500).json(error);
     }
-
-    const validPassword = await dbUserData.checkPassword(req.body.password);
-
-   
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
-      return;
-    }
-
-    // Once the user successfully logs in, set up the sessions variable 'loggedIn'
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res
-        .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
 });
 
 // Logout
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
+
   // When the user logs out, destroy the session
-  if (req.session.loggedIn) {
+  res.set('Cache-Control', 'no-store');
+
+  req.session.loggedInUser
+
+  if (req.session.loggedInUser) {
+
     req.session.destroy(() => {
-      res.status(204).end();
+
+        res.redirect(301, '/login');
     });
   } else {
     res.status(404).end();
