@@ -8,9 +8,9 @@
                     </section>
                     <form class="box">
                         <section class="field">
-                            <label for="username-input" class="">Username:</label>
+                            <label for="username-input" class="label">Username:</label>
                             <section class="control has-icons-left">
-                                <input type="text" id="username-input" class="input" required>
+                                <input type="text" id="username-input" placeholder="e.g. username" class="input" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-envelope"></i>
                                 </span>
@@ -18,7 +18,7 @@
                         </section>
                         {{#if (equals logInOrSignUp "Sign Up")}}
                             <section class="field">
-                                <label for="email-input" class="">Email (Optional):</label>
+                                <label for="email-input" class="label">Email (Optional):</label>
                                 <section class="control has-icons-left">
                                     <input type="email" id="email-input" placeholder="e.g. mike@gmail.com" class="input">
                                     <span class="icon is-small is-left">
