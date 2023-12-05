@@ -23,7 +23,7 @@
                 <a href="/" id="home-link">Home</a>
                 <a href="/create-review" id="dashboard-link">Dashboard</a>
                 {{#if loggedInUser}}
-                <a id="login-link" href="/api/users/logout" class="custom-login-logout-button">Logout</button>
+                <a id="login-link" href="/api/users/logout" class="custom-login-logout-button">Logout</a>
                 {{else}}
                 <a id="login-link" href="/login" class="button custom-login-logout-button">Login</a>
                 {{/if}}
@@ -31,7 +31,7 @@
         </section>
         <section id="welcome-bar" class="medium-text">
             {{#if loggedInUser}}
-                <p id="welcome-line" class="d-block">Welcome, <b>{{{loggedInUsername}}}</b></p>
+                <p id="welcome-line" class="d-block">Welcome, <b>{{{loggedInUser.username}}}</b></p>
             {{/if}}
         </section>
         <section id="main-header hero">

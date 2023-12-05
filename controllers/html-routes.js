@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Book, Review, User } = require('../models');
+const baseAuthenticateWhetherLoggedIn = require('../utils/basic-authentication.js')
 // Import the custom middleware
 // const withAuth = require('../utils/auth'); 
 
@@ -11,8 +12,11 @@ router.get('/', async (req, res) => {
         });
         const books = bookData.map((book) => book.get({ plain: true }));
       
-        res.render('homepage', {books} ); 
-        //res.status(200).json(books);
+        res.render('homepage', {
+            books, 
+            loggedInUser: req.session.loggedInUser
+        }); 
+        
       
 
     } catch (err) {
@@ -149,7 +153,7 @@ router.get('/dashboard', async (req, res) => {
 
 // Villy: sorry I don't know how the passport tool works,
 //        can you make this route go through the passport verification?
-router.get('/create-review/:id', async (req, res) => {
+router.get('/create-update-delete-review/:id', baseAuthenticateWhetherLoggedIn, async (req, res) => {
     try {
         console.log(req.params);
         const bookData = await Book.findByPk(req.params.id);
@@ -157,11 +161,10 @@ router.get('/create-review/:id', async (req, res) => {
         const book = bookData.get({plain: true});
         console.log(book);
 
-        res.render('create-review', {
-            ...book,
-            // Villy: does these determined if you are logged in
-            // loggedInUser: req.session.loggedInUser,
-            // loggedInUsername: req.session.loggedInUser.username
+        res.render('create-update-delete-review', {
+            book: book,
+            loggedInUser: req.session.loggedInUser,
+            newElement: true
         });
     }
     catch (err) {

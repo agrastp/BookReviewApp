@@ -33,9 +33,9 @@ async function loginFormHandler(event){
             headers: {'Content-Type': 'application/json'}
         });
 
-        if(response.url.slice(-9) === 'dashboard'){
+        if(response.url.slice(-1) === '/'){
 
-            window.location.replace('./dashboard');
+            window.location.replace('./');
         }
 
         if(response.url.slice(-5) === 'false' && response.redirected === true){
