@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
         res.render('homepage', {books} ); 
         //res.status(200).json(books);
       
-
     } catch (err) {
         res.status(500).json(err);
     }
