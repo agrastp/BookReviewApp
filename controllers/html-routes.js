@@ -11,8 +11,8 @@ router.get('/', async (req, res) => {
         });
         const books = bookData.map((book) => book.get({ plain: true }));
       
-        res.render('homepage', books ); 
-        res.status(200).json(books);
+        res.render('homepage', {books} ); 
+        //res.status(200).json(books);
       
 
     } catch (err) {
