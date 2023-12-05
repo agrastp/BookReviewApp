@@ -1,15 +1,25 @@
+
 const sequelize = require('../config/connection');
 const {Book, Review, User} = require('../models');
+
+const {hashMultiplePasswords} = require('../utils/hash-password.js')
+
 
 const userData = require('./userData.json');
 const bookData = require('./bookData.json');
 const reviewData = require('./reviewData.json');
 
+
+
+
 const seedDatabase = async () => {
+
+    let userDataWithHashedPasswords = await hashMultiplePasswords(userData);
+    
     await sequelize.sync({ force: false });
 
     // Villy: I will come back and change it when necessary
-    await User.bulkCreate(userData, {
+    await User.bulkCreate(userDataWithHashedPasswords, {
         individualHooks: true,
         returning: true,
     });
@@ -21,4 +31,14 @@ const seedDatabase = async () => {
     process.exit(0);
 }
 
-seedDatabase();
+try{
+
+    seedDatabase();
+
+} catch (error){
+
+    console.log(error);
+}
+
+
+

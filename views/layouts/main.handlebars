@@ -17,23 +17,27 @@
 
 <body>
     <header class="box custom-header">
-        <div id="navbar-section">
+        <section id="navbar-section">
             {{!-- col-3 justify-content-between --}}
             <nav class="navbar-item is-arrowless custom-navbar">
                 <a href="/" id="home-link">Home</a>
                 <a href="/create-review" id="dashboard-link">Dashboard</a>
-                {{#if logged-in}}
-                <button id="logout-link" class="custom-login-logout-button">Logout</button>
+                {{#if loggedInUser}}
+                <a id="login-link" href="/api/users/logout" class="custom-login-logout-button">Logout</button>
                 {{else}}
                 <a id="login-link" href="/login" class="button custom-login-logout-button">Login</a>
                 {{/if}}
             </nav>
-        </div>
-
+        </section>
+        <section id="welcome-bar" class="medium-text">
+            {{#if loggedInUser}}
+                <p id="welcome-line" class="d-block">Welcome, <b>{{{loggedInUsername}}}</b></p>
+            {{/if}}
+        </section>
         <section id="main-header hero">
-            <div class="hero-head">
+            <section class="hero-head">
                 <h1 class="title custom-title">Book Review Application</h1>
-            </div>
+            </section>
         </section>
     </header>
 

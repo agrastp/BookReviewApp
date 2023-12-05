@@ -1,0 +1,67 @@
+<section class="hero">
+    <section class="hero-body">
+        <section class="container">
+            <section class="columns is-centered">
+                <section class="column is-6-desktop is-6-tablet is-6-widescreen">
+                    <section class="has-background-dark custom-top-left-right-border-radius">
+                        <h2 class="title is-4 has-text-white has-text-centered custom-padding-4">{{{logInOrSignUp}}}</h2>
+                    </section>
+                    <form class="box">
+                        <section class="field">
+                            <label for="username-input" class="">Username:</label>
+                            <section class="control has-icons-left">
+                                <input type="text" id="username-input" class="input" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            </section>
+                        </section>
+                        {{#if (equals logInOrSignUp "Sign Up")}}
+                            <section class="field">
+                                <label for="email-input" class="">Email (Optional):</label>
+                                <section class="control has-icons-left">
+                                    <input type="email" id="email-input" placeholder="e.g. mike@gmail.com" class="input">
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </section>
+                            </section>
+                        {{/if}}
+                        <section class="field">
+                            <label for="password-input" class="label">Password:</label>
+                            <section class="control has-icons-left">
+                                <input type="password" id="password-input" placeholder="e.g. password" class="input" required>
+                                <span class="icon is-small is-left">
+                                <i class="fa fa-lock"></i>
+                                </span>
+                            </section>
+                        </section>
+                        <section class="field custom-margin-top-5">
+                            {{#if (equals logInOrSignUp "Log In")}}
+                                <button id="login-signup-button" class="button is-success">Log In!</button>
+                            {{/if}}
+                            {{#if (equals logInOrSignUp "Sign Up")}}
+                                <button id="login-signup-button" class="button is-success">Sign Up!</button>
+                            {{/if}}
+                        </section>
+                        {{#if (equals logInOrSignUp "Log In")}}
+                        <section>
+                            <h4>Don't have an account? <a id="signup-redirect" href="/signup" class="has-text-centered">Click here</a></h4>
+                        </section>
+                        {{/if}}
+                        {{#if (equals logInOrSignUp "Sign Up")}}
+                            <section>
+                                <h4>Already have an account? <a id="login-redirect" href="/login" class="has-text-centered">Click here</a></h4>
+                            </section>
+                        {{/if}}
+                    </form>
+                    <section>
+                        <p id="error-message">{{{errorMessage}}}</p>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>  
+
+<script src="/js/login-signup.js" defer></script>
