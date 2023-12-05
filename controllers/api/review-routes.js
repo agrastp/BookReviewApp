@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Review = require('../../models/Review');
 
+//Creates a new review
 router.post('/', async (req, res) => {
     try { 
 
@@ -23,6 +24,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+//Updates a review
 router.put('/', async (req, res) => {
 
     try { 
@@ -49,6 +51,7 @@ router.put('/', async (req, res) => {
     }
 });
 
+//Deletes a review by ID
 router.delete('/id:', async (req, res) => {
 
     try {

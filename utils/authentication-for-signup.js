@@ -1,3 +1,5 @@
+//Authentication for signing up and hashes password
+
 const {v4: uuidv4} = require('uuid');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;

@@ -1,3 +1,4 @@
+{{!-- Main Handlebar Page- reader will either need to login or signup --}}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -17,6 +18,7 @@
     <header class="box custom-header">
         <section id="navbar-section">
             {{!-- col-3 justify-content-between --}}
+            {{!-- Navigation --}}
             <nav class="navbar-item is-arrowless custom-navbar">
                 <a href="/" id="home-link">Home</a>
                 <a href="/create-review" id="dashboard-link">Dashboard</a>
@@ -32,6 +34,7 @@
             <p id="welcome-line" class="d-block">Welcome, <b>{{{loggedInUsername}}}</b></p>
             {{/if}}
         </section>
+        {{!-- Logo Image --}}
         <div class="center-image">
             <img src="./images/BookBuzz_Logo.png" alt="Image of a book with bees flying out">
         </div>

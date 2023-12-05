@@ -1,8 +1,11 @@
+/* Imported font family */
+
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus&family=Montserrat&family=Playfair+Display&display=swap');
 * {
     font-family: 'Gentium Book Plus', serif;
 }
 
+/* Navigation */
 .custom-navbar a {
     margin-right: 2%;
 }
@@ -11,19 +14,7 @@
     text-align: right;
 }
 
-.custom-title {
-    text-align: center;
-    padding: 30px 30px 10px;
-    font-size: 60px;
-    text-shadow: 2px 2px 2px gray;
-}
-
-#sub-title {
-    font-size: 40px;
-    text-align: center;
-    padding: 5px 30px 30px;
-}
-
+/* Header with Logo */
 .custom-header {
     background-color: rgb(250, 232, 210);
 }
@@ -50,6 +41,7 @@
     margin-top: 5%;
 }
 
+/* Book List with information about the book */
 .custom-books-section {
     margin-top: 5%;
     margin-bottom: 5%;
@@ -76,11 +68,13 @@
     justify-content: space-between;
 }
 
+/* Review Button */
 .add-review-button-homepage {
     background-color: azure;
     color: rgb(192, 192, 192);
 }
 
+/* Review Form */
 .custom-add-review-form {
     margin: 5%;
     display: flex;

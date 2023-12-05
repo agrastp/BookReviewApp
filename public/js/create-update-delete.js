@@ -4,11 +4,12 @@ let createReviewButton = document.getElementById("create-review-button");
 let updateReviewButton = document.getElementById("update-review-button");
 let deleteReviewButton = document.getElementById("delete-review-button");
 
-
+//Listeners for buttons
 createReviewButton.addEventListener("click", createReview);
 updateReviewButton.addEventListener("click", updateReview);
 deleteReviewButton.addEventListener("click", deleteReview);
 
+//Fetch to post a review
 async function createReview(){
 
     try{
@@ -39,6 +40,7 @@ async function createReview(){
     
 }
 
+//Fetch to update a review
 async function updateReview(event){
     try {
 
@@ -68,6 +70,7 @@ async function updateReview(event){
     }
 }
 
+//Fetch to delete a review
 async function deleteReview(event){
 
     let id = event.target.dataset.editElementId;
@@ -88,6 +91,7 @@ async function deleteReview(event){
     }
 }
 
+//Directs to either login or homepage
 function handleRedirection(response){
 
     if(response.url.slice(-5) === "login"){
@@ -100,6 +104,7 @@ function handleRedirection(response){
 
     }
 }
+
 
 function performValidation(){
 
@@ -121,6 +126,7 @@ function performValidation(){
     }
 }
 
+//Generates Book Review
 function generateBody(){
 
     let body = undefined;
@@ -130,4 +136,3 @@ function generateBody(){
     return body;
 }
 
-// if(performValidation())

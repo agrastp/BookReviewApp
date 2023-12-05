@@ -2,7 +2,7 @@ const {v4: uuidv4} = require('uuid');
 
 module.exports = {
 
-    // I, Gabriel, took these two helper functions from my module 14 challenge.
+    //Helper functions from module 14 challenge (Gabriel).
     count: (index) => {
 
         return index + 1;

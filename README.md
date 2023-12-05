@@ -30,8 +30,9 @@
   
   This is a collaborated project amongst peers in the OSU/EdX Fullstack Development Program. We used various resources to guide in the development of this project: 
 
-  -Book descriptions and some reviews from [goodreads.com](https://www.goodreads.com/)
-  -Module 13 and 14 Challenges and class examples
+  -Book descriptions and some reviews from [goodreads.com](https://www.goodreads.com/)<br>
+  -Module 13 and 14 Challenges and class examples used as references and common code<br>
+  -[Canva](https://www.canva.com) was utilized to create the logo image <br>
   
 ----------------------
 

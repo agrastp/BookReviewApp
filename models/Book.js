@@ -1,8 +1,10 @@
 const { Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
+//Create a new Sequelize model for books
 class Book extends Model {}
 
+//Defines columns on model
 Book.init(
     {
         id: {
@@ -38,7 +40,9 @@ Book.init(
         },
     },
     {
+        //link to database connection
         sequelize,
+        //creates created_at and updated_at fields
         timestamps: true,
         freezeTableName: true,
         underscored: true,
