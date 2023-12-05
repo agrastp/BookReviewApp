@@ -1,9 +1,12 @@
 <section id="books-section">
 {{#each books as |book|}}
     <section id="{{{generateUuid}}}">
-        <p id="book-title"></p>
-            
-        <p id="book-text"></p>
+        <li class="book-title">{{book.title}}</li>
+        <li class="book-author">{{book.author}}</li>
+        <li class="book-genre">{{book.genre}}</li>
+        <li class="book-page_num">{{book.page_num}}</li>
+        <p class="book-description">{{book.description}}</p>
     </section>
-</section>
 {{/each}}
+</section>
+
