@@ -1,54 +1,75 @@
 const router = require('express').Router();
-const { User } = require('../../models');
-const passport = require('../../utils/authentication.js')
+//const { User } = require('../../models');
+const passport = require('../../utils/authentication-for-login.js');
+const passport2 = require('../../utils/authentication-for-signup.js');
 const bcrypt = require('bcrypt');
 const { sessionSaveWithPromise } = require('../../utils/session-promise-functions.js');
 //const crypto = require('crypto');
 
 
 // CREATE new user
-router.post('/signup', async (req, res) => {
-  try {
-    const dbUserData = await User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    });
+router.post('/signup', passport2.authenticate('signup'), async (req, res) => {
+    try {
 
-    // Set up sessions with a 'loggedIn' variable set to `true`
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      req.session.loggedInUsername = req.body.username;
+            if(req.invalidUsername === "true"){
 
-      res.status(200).json(dbUserData);
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+            res.redirect('/signup?invalidUsername=true');
+
+        } else if(req.duplicateUser === "true"){
+
+            res.redirect('/signup?duplicateUser=true');
+
+        } else if(req.loggedInUser){
+
+            req.session.loggedInUser = req.loggedInUser
+            await sessionSaveWithPromise(req);
+
+            res.redirect('/dashboard');
+        }
+        // const dbUserData = await User.create({
+        //   username: req.body.username,
+        //   email: req.body.email,
+        //   password: req.body.password,
+        // });
+
+        // // Set up sessions with a 'loggedIn' variable set to `true`
+        // req.session.save(() => {
+        //   req.session.loggedIn = true;
+        //   req.session.loggedInUsername = req.body.username;
+
+        //   res.status(200).json(dbUserData);
+        // });
+    } catch (err) {
+
+        console.log(err);
+        res.status(500).json(err);
+    }
 });
 
 
 
 // Login
-router.post('/login', passport.authenticate('local'), async  (req, res) => {
+router.post('/login', passport.authenticate('login'), async  (req, res) => {
 
-if(req.nullField === true){
+    try {
 
-    res.redirect('/login?field=null');
+        if(req.invalidCredentials === "true"){
 
-} else if(req.invalidCredentials === true){
+            res.redirect('/login?valid=false');
 
-    res.redirect('/login?valid=false');
+        } else if(req.loggedInUser){
 
-} else if(req.loggedInUser){
+            req.session.loggedInUser = req.loggedInUser
+            await sessionSaveWithPromise(req);
 
-    req.session.loggedInUser = req.loggedInUser
-    await sessionSaveWithPromise(req);
+            res.redirect('/dashboard');
+        }
 
-    res.redirect('/dashboard');
-}
+    } catch (error) {
 
+        console.log(error);
+        res.status(500).json(error);
+    }
 });
 
 // Logout

@@ -97,9 +97,26 @@ router.get('/signup', async (req, res) => {
     try {
 
         res.set('Cache-Control', 'no-store');
+        let errorMessage = "";
+        
+        if(req.query.invalidUsername === "true"){
+
+            errorMessage = "A username can only contain letters and numbers.  Try again!!";
+        
+        } else if(req.query.duplicateUser === "true"){
+
+            errorMessage = "This username is already taken.  Try again!!";
+        
+        } else if (req.query.nullField === "true"){
+
+            errorMessage = "You must enter both the username and the password.  Try again!!";
+        
+        }
+        
         res.render('login-signup', {
 
-            
+            errorMessage,
+
             logInOrSignUp: "Sign Up",
             loggedInUser: req.session.loggedInUsername
         })
@@ -111,7 +128,7 @@ router.get('/signup', async (req, res) => {
 
 router.get('/dashboard', async (req, res) => {
     
-    
+
     try {
 
         res.set('Cache-Control', 'no-store');

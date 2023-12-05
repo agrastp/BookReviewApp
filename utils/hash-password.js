@@ -23,11 +23,21 @@ async function hashMultiplePasswords(userData){
     return userData;
 }
 
-async function hashSinglePassword(password, salt){
+async function hashSinglePassword(password, salt, reasonForCallingFunction){
 
     let derivedKey = await scryptAsync(password, salt, 64, {N, r, p});
 
-    return derivedKey;
+    if(reasonForCallingFunction === "authentication"){
+
+        return derivedKey;
+    
+    } else if (reasonForCallingFunction === "creation"){
+
+        let derivedKeyHex = derivedKey.toString('hex');
+        return derivedKeyHex;
+    }
+
+    
 }
 
 module.exports = {hashMultiplePasswords, hashSinglePassword};
