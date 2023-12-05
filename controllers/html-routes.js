@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Book, Review } = require('../models');
+const { Book, Review, User } = require('../models');
 // Import the custom middleware
 // const withAuth = require('../utils/auth'); Do we need this?
 
@@ -146,12 +146,20 @@ router.get('/dashboard', async (req, res) => {
 
 // Villy: sorry I don't know how the passport tool works,
 //        can you make this route go through the passport verification?
-router.get('/create-review', async (req, res) => {
+router.get('/create-review/:id', async (req, res) => {
     try {
+        console.log(req.params);
+        const bookData = await Book.findByPk(req.params.id);
+        
+        const book = bookData.get({plain: true});
+        console.log(book);
+
         res.render('create-review', {
-            loggedInUser: req.session.loggedInUser,
-            loggedInUsername: req.session.loggedInUser.username
-        })
+            ...book,
+            // Villy: does these determined if you are logged in
+            // loggedInUser: req.session.loggedInUser,
+            // loggedInUsername: req.session.loggedInUser.username
+        });
     }
     catch (err) {
         res.status(500).json(err);

@@ -57,3 +57,15 @@
     background-color: azure;
     color: rgb(192, 192, 192);
 }
+
+.custom-add-review-form {
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-create-new-review-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
