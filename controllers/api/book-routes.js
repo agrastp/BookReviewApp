@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Book = require('../../models/Book');
 
+//Creates a new book
 router.post('/', async (req, res) => {
     try { 
       const bookData = await Book.create({
