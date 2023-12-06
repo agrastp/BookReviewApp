@@ -5,7 +5,9 @@
     <section id="{{{generateUuid}}}" class="custom-books-section box" class="flex-container">
         <figure class="book-images"  class="image is-3by2">
             {{!-- Villy: will need to change this to fit the cover --}}
-            <img src="{{{book.image}}}" class="has-ratio" width="150" height="250">
+
+            <img data="{{book.id}}" src="{{{book.image}}}" class="image is-128x128 book-image-redirect">
+            
             {{!-- Villy: Is loggedInUser the logged_in value? --}}
             {{#if ../loggedInUser}}
             <button data="{{book.id}}" class="add-review-button-homepage button is-small">View Reviews</button>
@@ -14,6 +16,7 @@
 
         </figure>
         {{!-- line 13 to line 28 will be changed to fit small screen --}}
+        
         <section class="book-lists">
             <div>
                 <li class="book-title"><strong>Title:</strong> {{book.title}}</li>
@@ -21,6 +24,7 @@
                 <li class="book-genre"><strong>Genre:</strong> {{book.genre}}</li>
                 <li class="book-page_num"><strong>Pages:</strong> {{book.page_num}}</li>
             </div>
+
         </section>
 
         <section class="book-description-box">

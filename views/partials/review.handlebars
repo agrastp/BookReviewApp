@@ -1,0 +1,15 @@
+<section class="custom-book-reviews-section">
+    {{#each reviews as |review|}}
+        <section class="box custom-review-box">
+            <h2 class="custom-review-title"><strong>{{review.title}}</strong></h2>
+            <p>{{review.content}}</p>
+            {{!-- Villy: Need to link the User with Book through Review --}}
+            <p class="custom-review-name-date">Posted by <span class="custom-text-light-blue">{{review.user.username}}</span> on {{format_date createdAt}}</p>
+            {{#if (equals review.user.id ../loggedInUser.id)}}
+                <section class="d-flex justify-content-around">
+                    <button id="edit-delete-review-button-{{{count @index}}}" class="button" data-review-Id={{{review.id}}} data-book-Id={{{../id}}}>Edit or Delete!</button>
+                </section>
+            {{/if}}
+        </section>
+    {{/each}}
+</section>

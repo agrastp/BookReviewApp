@@ -58,11 +58,11 @@
 
 }
 
+
 .book-lists {
     margin: 3%;
     line-height: 1.5;
 }
-
 .book-lists li {
     list-style: none;
 }
@@ -160,5 +160,82 @@
 }
 
 .custom-text-light-blue {
-    color:rgb(137, 195, 242);
+
+    color:rgb(188, 223, 252);
+}
+
+.book-image-redirect {
+    cursor: pointer;
+}
+
+.custom-columns {
+    margin: 3%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.custom-left-column {
+    width: 20%;
+}
+
+.custom-reviews-box {
+    border: ridge .5px black;
+}
+
+.custom-review-createdOn {
+    border-bottom: double 1px black;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+}
+
+.custom-user-review-title {
+    font-size: larger;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.custom-edit-delete-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.custom-user-edit-button {
+    background-color: rgb(137, 253, 253);
+    color: white;
+}
+
+.custom-user-delete-button {
+    background-color: rgb(255, 160, 160);
+    color: white;
+}
+
+@media screen and (max-width: 576px) {
+    .book-images {
+        margin: 3%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .add-review-button-homepage {
+        background-color: azure;
+        color: rgb(192, 192, 192);
+    }
+
+    .book-images {
+        
+    }
+
+    .add-review-button-homepage {
+
+    }
+    
+}
+
+@media screen and (max-width: 350px) {
+
 }
