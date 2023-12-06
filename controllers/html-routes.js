@@ -27,6 +27,11 @@ router.get('/', async (req, res) => {
 // GET one book
 router.get('/book/:id', async (req, res) => {
     try {
+        let displayCudForm = false;
+        let newElement = false;
+        let reviewInQuestion = undefined;
+        let errorMessage = undefined;
+
         const bookData = await Book.findByPk(req.params.id, {
             include: [
                 { model: Review, include: [
@@ -34,19 +39,58 @@ router.get('/book/:id', async (req, res) => {
                 ]}
             ]
         });
+
         if (!bookData) {
+
             res.status(404).json({ message: 'No book with this id!' });
             return;
         }
         const book = bookData.get({ plain: true });
-        // console.log(book);
+
+        if(req.query.displayCudForm === "true"){
+
+            displayCudForm = true;
+        }
+
+        
+
+        if(req.query.newElement === "true"){
+
+            newElement = true;
+
+        } else if(req.query.newElement === "false"){
+
+            newElement = false;
+
+            reviewInQuestion = book.reviews.find(function(review){
+
+                if(review.id === parseInt(req.query.reviewId)){
+        
+                    return review
+                }
+            });
+        }
+
+        if(req.query.valid === "false"){
+
+            errorMessage = `The title and content of a post must not be left blank. A post title can only contain the special characters '!', ':', '?', and '-'
+                            and can't start with those characters or end with ':' or '-'.  Try again !!!`
+        }
+        
         res.render('book', {
+            displayCudForm,
+            newElement, 
             ...book,
+            reviewInQuestion,
+            errorMessage,
             loggedInUser: req.session.loggedInUser,
+
             // Villy: copy pasted this line from my challenge, need to further investigate what it does
             user_id: req.session.user_id
         });
+
     } catch (err) {
+
         res.status(500).json(err);
     };
 });

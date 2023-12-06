@@ -9,7 +9,11 @@ let trimmedContent = undefined;
 
 
 //Listeners for buttons
-createReviewButton.addEventListener("click", createReview);
+if(createReviewButton){
+    
+    createReviewButton.addEventListener("click", createReview);
+}
+
 
 
 if(updateReviewButton){
@@ -27,11 +31,13 @@ async function createReview(event){
 
     event.preventDefault();
 
+
+
     try{
 
         if(performValidation() === true){
 
-            let requestBody = generateBody()
+            let requestBody = generateBody(event)
     
             let response = await fetch ('/api/reviews', {
     
@@ -40,11 +46,11 @@ async function createReview(event){
                 body: requestBody
             });
 
-            handleRedirection(response);
+            handleRedirection(event, response);
     
         } else {
     
-            document.location.href = "/create-review?valid=false";
+            document.location.href = `/book/${event.target.dataset.bookId}?displayCudForm=true&newElement=false&reviewId=${event.target.dataset.reviewId}&valid=false`
         }
     
     } catch (error){
@@ -64,22 +70,22 @@ async function updateReview(event){
 
         if(performValidation() === true){
 
-            let requestBody = generateBody()
+            let requestBody = generateBody(event)
 
-            let id = event.target.dataset.editReviewId;
+            let id = event.target.dataset.reviewId;
 
-            let response = await fetch (`/api/reviews/${id}`, {
+            let response = await fetch(`/api/reviews/${id}`, {
 
-                method: "UPDATE",
+                method: "PUT",
                 headers: {"Content-Type": "application/json"},
                 body: requestBody
             });
 
-            handleRedirection(response);
+            handleRedirection(event, response);
 
         } else {
 
-            document.location.href = "/create-review?valid=false";
+            document.location.href = `/book/${event.target.dataset.bookId}?displayCudForm=true&newElement=false&reviewId=${event.target.dataset.reviewId}&valid=false`
         }
 
     } catch (error){
@@ -93,17 +99,17 @@ async function deleteReview(event){
 
     event.preventDefault();
 
-    let id = event.target.dataset.editElementId;
+    let id = event.target.dataset.reviewId;
     
     try {
 
-        let response = await fetch(`/api/reviews${id}`, {
+        let response = await fetch(`/api/reviews/${id}`, {
 
             method: "DELETE",
             headers: {"Content-Type": "application/json"},
         });
 
-        handleRedirection(response);
+        handleRedirection(event, response);
     
     } catch(error){
 
@@ -112,7 +118,7 @@ async function deleteReview(event){
 }
 
 //Directs to either login or homepage
-function handleRedirection(response){
+function handleRedirection(event, response){
 
     if(response.url.slice(-5) === "login"){
 
@@ -120,7 +126,7 @@ function handleRedirection(response){
     
     } else{
 
-        document.location.href = "/";
+        document.location.href = `/book/${event.target.dataset.bookId}`;
     }
 }
 
@@ -135,7 +141,7 @@ function performValidation(){
 
     let passingRegex = titleRegex.test(trimmedTitle.value); 
 
-    if((passingRegex !== false) && (trimmedContent !== "")){
+    if((passingRegex !== false) && (trimmedContent !== "") && (trimmedTitle !== "")){
 
         return true;
 
@@ -146,12 +152,12 @@ function performValidation(){
 }
 
 //Generates Book Review
-function generateBody(){
+function generateBody(event){
 
     let body = undefined;
 
         body = JSON.stringify({title: trimmedTitle, content: trimmedContent, book_id: 
-                                createReviewButton.dataset.bookId, user_id: createReviewButton.dataset.userId})
+                               event.target.dataset.bookId, user_id: event.target.dataset.userId})
     return body;
 }
 
