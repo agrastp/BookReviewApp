@@ -1,9 +1,5 @@
 {{!-- Seeded Book Information --}}
-<header>
-    <div class="center-image">
-        <img src="../public/images/BookBuzz_Logo.png" alt="Image of a book with bees flying out">
-    </div>
-</header>
+
 <section id="books-section" class="container">
     {{#each books as |book|}}
     <section id="{{{generateUuid}}}" class="custom-books-section box" class="flex-container">
@@ -18,20 +14,13 @@
 
         </figure>
         {{!-- line 13 to line 28 will be changed to fit small screen --}}
-        <section class="book-lists columns">
-            <div class="column is-2">
-                <li>Title:</li>
-                <li>Author: </li>
-                <li>Genre: </li>
-                <li>Pages:</li>
+        <section class="book-lists">
+            <div>
+                <li class="book-title"><strong>Title:</strong> {{book.title}}</li>
+                <li class="book-author"><strong>Author:</strong> {{book.author}} </li>
+                <li class="book-genre"><strong>Genre:</strong> {{book.genre}}</li>
+                <li class="book-page_num"><strong>Pages:</strong> {{book.page_num}}</li>
             </div>
-
-            <aside class="column">
-                <li class="book-title">{{book.title}}</li>
-                <li class="book-author">{{book.author}}</li>
-                <li class="book-genre">{{book.genre}}</li>
-                <li class="book-page_num">{{book.page_num}}</li>
-            </aside>
         </section>
 
         <section class="book-description-box">

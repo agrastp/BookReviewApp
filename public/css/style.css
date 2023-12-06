@@ -6,6 +6,11 @@
 }
 
 /* Navigation */
+
+.navbar-item {
+    font-size: 1.3rem;
+}
+
 .custom-navbar a {
     margin-right: 2%;
 }
@@ -14,19 +19,24 @@
     text-align: right;
 }
 
+#welcome-line {
+    padding: 10px;
+    font-size: 1rem;
+    color: darkgreen;
+}
 /* Header with Logo */
 .custom-header {
     background-color: rgb(250, 232, 210);
 }
 
 .center-image {
-    text-align: center;
+    text-align: right;
 }
 
 .center-image img {
-    max-width: 25%;
-    height: 25%;
-    padding: 20px;
+    /* max-width: 25%;
+    height: 25%; */
+    padding: 0px 40px 40px;
 }
 
 .custom-top-left-right-border-radius {
@@ -50,6 +60,7 @@
 
 .book-lists {
     margin: 3%;
+    line-height: 1.5;
 }
 
 .book-lists li {
@@ -60,21 +71,15 @@
     border-top: solid black 1px;
     margin: 3%;
     padding-top: 3%;
-}
-.flex-container {
-    display: flex;
-    justify-content: flex-end; /* Align items to the end of the container (right in this case) */
-    align-items: center; /* Center vertically */
-    height: 100vh;
+    line-height: 1.5;
+    font-size: 1.1rem;
 }
 
 .book-images {
-    max-width: 100%; /* Ensure the image does not exceed its container */
-    height: auto; 
-    /* margin: 3%;
+    margin: 3%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between; */
+    justify-content: space-between;
 }
 
 /* Review Button */
@@ -155,5 +160,5 @@
 }
 
 .custom-text-light-blue {
-    color:rgb(188, 223, 252);
+    color:rgb(137, 195, 242);
 }
