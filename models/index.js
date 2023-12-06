@@ -22,4 +22,20 @@ Book.hasMany(Review, {
     onDelete: 'CASCADE'
 });
 
+User.belongsToMany(Book, {
+    through: {
+        model: Review,
+        unique: false
+    },
+    as: 'user_idk',
+});
+
+Book.belongsToMany(User, {
+    through: {
+        model: Review,
+        unique: false
+    },
+    as: 'user',
+});
+
 module.exports = {User, Review, Book}
