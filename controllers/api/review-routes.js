@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 });
 
 //Updates a review
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
 
     try { 
 
@@ -43,7 +43,7 @@ router.put('/', async (req, res) => {
             }
         );
 
-    
+        res.status(200).json(update);
     
     } catch (err) {
 
@@ -52,11 +52,11 @@ router.put('/', async (req, res) => {
 });
 
 //Deletes a review by ID
-router.delete('/id:', async (req, res) => {
+router.delete('/:id', async (req, res) => {
 
     try {
 
-        let deletion = await blogPost.destroy(
+        let deletion = await Review.destroy(
         
             {
                 where: {

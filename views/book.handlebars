@@ -16,24 +16,23 @@
 </main>
 
 {{!-- Villy: Hi, can we make it so the add review button only show up when logged in? --}}
-{{!-- {{#if loggedInUser}} --}}
-<section class="custom-add-review-button">
-    <div id="add-new-review" class="button">
-        <p data="{{id}}" class="add-new-review-button">+ New Review</p>
-    </div>
-</section>
-{{!-- {{/if}} --}}
+{{#if loggedInUser}}
+    {{#unless displayCudForm}}
+        <section class="custom-add-review-button">
+            <section id="add-new-review" class="button">
+                <button id="add-new-review-button" data="{{id}}">+ New Review</button>
+            </section>
+        </section>
+    {{/unless}}
+{{/if}}
 
-<section class="custom-book-reviews-section">
-{{#each reviews as |review|}}
-    <section class="box custom-review-box">
-        <h2 class="custom-review-title"><strong>{{review.title}}</strong></h2>
-        <p>{{review.content}}</p>
-        {{!-- Villy: Need to link the User with Book through Review --}}
-        <p class="custom-review-name-date">Posted by <span class="custom-text-light-blue">{{review.user.username}}</span> on {{format_date createdAt}}</p>
-    </section>
-{{/each}}
-</section>
+{{#unless displayCudForm}}
+    {{> review}}
+{{/unless}}
+
+{{#if displayCudForm}}
+    {{> create-update-delete-review}}
+{{/if}}
 
 {{!-- Villy: To make it so user cannot interact with the single book page if not logged in --}}
 {{!-- {{#if loggedInUser}} --}}

@@ -10,7 +10,7 @@ const redirectToCreateReview = (event) => {
     const id = event.target.getAttribute('data');
     console.log(id);
 
-    document.location.replace(`/create-update-delete-review/${id}`);
+    document.location.replace(`/book/${id}`);
 }
 
 const redirectToBookPage = (event) => {
