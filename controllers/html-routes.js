@@ -185,15 +185,22 @@ router.get('/signup', async (req, res) => {
 
 //Renders the dashboard 
 router.get('/dashboard', async (req, res) => {
-
+    
     try {
         console.log(req.session)
         // Villy: Error here, might need to change
         const userData = await User.findByPk(req.session.loggedInUser.id, {
+            order: [['createdAt', 'DESC']],
             attributes: {exclude: ['password']},
-            include: [{model: Review}]
+            include: [{model: Review, include: [{model: Book}]}]
         });
 
+        // include: [
+        //     { model: Review, include: [
+        //         { model: User }
+        //     ]}
+        // ]
+        
         const user = userData.get({plain: true});
 
         console.log(user);
