@@ -18,13 +18,12 @@
         {{!-- line 13 to line 28 will be changed to fit small screen --}}
         
         <section class="book-lists">
-            <div>
-                <li class="book-title"><strong>Title:</strong> {{book.title}}</li>
-                <li class="book-author"><strong>Author:</strong> {{book.author}} </li>
-                <li class="book-genre"><strong>Genre:</strong> {{book.genre}}</li>
-                <li class="book-page_num"><strong>Pages:</strong> {{book.page_num}}</li>
-            </div>
-
+            <aside class="custom-right-column">
+                <li class="book-title"><span class="display-below-576">Title: </span>{{book.title}}</li>
+                <li class="book-author"><span class="display-below-576">Author: </span>{{book.author}}</li>
+                <li class="book-genre"><span class="display-below-576">Genre: </span>{{book.genre}}</li>
+                <li class="book-page_num"><span class="display-below-576">Pages: </span>{{book.page_num}}</li>
+            </aside>
         </section>
 
         <section class="book-description-box">
