@@ -4,7 +4,7 @@
     <section id="{{{generateUuid}}}" class="custom-books-section box">
         <figure class="book-images">
             {{!-- Villy: will need to change this to fit the cover --}}
-            <img class="image is-128x128">
+            <img src="{{{book.image}}}" class="image is-128x128">
             {{!-- Villy: Is loggedInUser the logged_in value? --}}
             {{#if ../loggedInUser}}
                 <button data="{{book.id}}" class="add-review-button-homepage button is-small">View Reviews</button>
