@@ -43,8 +43,6 @@ router.get('/book/:id', async (req, res) => {
         res.render('book', {
             ...book,
             loggedInUser: req.session.loggedInUser,
-            // Villy: copy pasted this line from my challenge, need to further investigate what it does
-            user_id: req.session.user_id
         });
     } catch (err) {
         res.status(500).json(err);
@@ -141,15 +139,22 @@ router.get('/signup', async (req, res) => {
 
 //Renders the dashboard 
 router.get('/dashboard', async (req, res) => {
-
+    
     try {
         console.log(req.session)
         // Villy: Error here, might need to change
         const userData = await User.findByPk(req.session.loggedInUser.id, {
+            order: [['createdAt', 'DESC']],
             attributes: {exclude: ['password']},
-            include: [{model: Review}]
+            include: [{model: Review, include: [{model: Book}]}]
         });
 
+        // include: [
+        //     { model: Review, include: [
+        //         { model: User }
+        //     ]}
+        // ]
+        
         const user = userData.get({plain: true});
 
         console.log(user);
