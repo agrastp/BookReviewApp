@@ -23,7 +23,7 @@ const hbs = exphbs.create({helpers});
 
 // Set up sessions with cookies
 const sess = {
-    secret: 'To Be Decided',
+    secret: process.env.SESSION_SECRET,
     rolling: true,
     cookie: {
         maxAge: 1000 * 60 * 10,
