@@ -22,24 +22,34 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 
-
 });
 
-// GET one book by ID
-router.get('/books/:id', async (req, res) => {
+// GET one book
+router.get('/book/:id', async (req, res) => {
     try {
-        const bookData = await Book.findByPk(req.params.id);
+        const bookData = await Book.findByPk(req.params.id, {
+            include: [
+                { model: Review, include: [
+                    { model: User }
+                ]}
+            ]
+        });
         if (!bookData) {
             res.status(404).json({ message: 'No book with this id!' });
             return;
         }
-        const books = bookData.get({ plain: true });
-        res.render('books', {books});
+        const book = bookData.get({ plain: true });
+        // console.log(book);
+        res.render('book', {
+            ...book,
+            loggedInUser: req.session.loggedInUser,
+            // Villy: copy pasted this line from my challenge, need to further investigate what it does
+            user_id: req.session.user_id
+        });
     } catch (err) {
         res.status(500).json(err);
     };
 });
-
 
 //GET all reviews
 router.get('/review', async (req, res) => {
@@ -131,14 +141,23 @@ router.get('/signup', async (req, res) => {
 
 //Renders the dashboard 
 router.get('/dashboard', async (req, res) => {
-    
 
     try {
+        console.log(req.session)
+        // Villy: Error here, might need to change
+        const userData = await User.findByPk(req.session.loggedInUser.id, {
+            attributes: {exclude: ['password']},
+            include: [{model: Review}]
+        });
 
-        res.set('Cache-Control', 'no-store');
+        const user = userData.get({plain: true});
+
+        console.log(user);
+
+        // res.set('Cache-Control', 'no-store');
         res.render('dashboard', {
-
-        
+            ...user,
+            
             loggedInUser: req.session.loggedInUser,
             loggedInUsername: req.session.loggedInUser.username
         })
