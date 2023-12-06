@@ -5,7 +5,7 @@
         "genre": "Fantasy, Fiction, Dark Fantasy, Adventure, Adult",
         "description": "'The Blade Itself' is Joe Abercrombie's debut fantasy novel, the first in the First Law Trilogy. The story follows Logen Ninefingers, a luckless barbarian; Captain Jezal dan Luthar, a selfish nobleman facing the impending war; and Inquisitor Glokta, a former soldier turned torturer with a penchant for cutting treason from the Union. Their lives become entangled with the arrival of the wizard Bayaz, setting off a series of events involving murderous conspiracies, settling old scores, and blurring the line between hero and villain. With unpredictable twists, compelling characters, and a cutting edge of noir fantasy, 'The Blade Itself' explores the grim realities of a dark and complex world.",
         "page_num": 515,
-        "image_path": "./public/images/The_Blade_Itself.jpg"
+        "image": "/images/The_Blade_Itself.jpg"
     },
     {
         "title": "A Game of Thrones",
@@ -13,7 +13,7 @@
         "genre": "Fantasy, Fiction, Adult, Adventure, Epic Fantasy",
         "description": "In a world where seasons are unpredictable, an impending threat looms. As the cold returns, ominous forces gather beyond the Wall in the north, while political intrigue unfolds in the southern kingdom. The Starks of Winterfell find themselves at the center of the turmoil. Lord Eddard Stark is reluctantly appointed the king's Hand, setting off a chain of events that could unravel the entire kingdom. 'A Game of Thrones' weaves a tale of lords, ladies, warriors, and sorcerers, navigating a landscape of treachery, betrayal, and deadly conflicts for the coveted throne.",
         "page_num": 835,
-        "image_path": "./public/images/Game_of_Thrones.jpg"
+        "image": "/images/Game_of_Thrones.jpg"
     },
     {
         "title": "The Lord of the Rings",
@@ -21,7 +21,7 @@
         "genre": "Fantasy, Fiction, High Fantasy, Adventure",
         "description": "In ancient times the Rings of Power were crafted by the Elven-smiths, and Sauron, the Dark Lord, forged the One Ring, filling it with his own power so that he could rule all others. But the One Ring was taken from him, and though he sought it throughout Middle-earth, it remained lost to him. After many ages it fell by chance into the hands of the hobbit Bilbo Baggins. From Sauron's fastness in the Dark Tower of Mordor, his power spread far and wide. Sauron gathered all the Great Rings to him, but always he searched for the One Ring that would complete his dominion. When Bilbo reached his eleventy-first birthday he disappeared, bequeathing to his young cousin Frodo the Ruling Ring and a perilous quest: to journey across Middle-earth, deep into the shadow of the Dark Lord, and destroy the Ring by casting it into the Cracks of Doom. The Lord of the Rings tells of the great quest undertaken by Frodo and the Fellowship of the Ring: Gandalf the Wizard; the hobbits Merry, Pippin, and Sam; Gimli the Dwarf; Legolas the Elf; Boromir of Gondor; and a tall, mysterious stranger called Strider.",
         "page_num": 1168,
-        "image_path": "./public/images/The_Lord_of_the_Rings"
+        "image": "/images/Game_of_Thrones.jpg"
     },
     {
         "title": "The Eye of the World",
@@ -29,7 +29,7 @@
         "genre": "Fantasy, Fiction, High Fantasy, Adult, Adventure",
         "description": "The Wheel of Time turns and Ages come and pass, leaving memories that become legend. Legend fades to myth, and even myth is long forgotten when the Age that gave it birth returns again. What was, what will be, and what is, may yet fall under the Shadow. Moiraine Damodred arrives in Emond’s Field on a quest to find the one prophesized to stand against The Dark One, a malicious entity sowing the seeds of chaos and destruction. When a vicious band of half-men, half beasts invade the village seeking their master’s enemy, Moiraine persuades Rand al’Thor and his friends to leave their home and enter a larger unimaginable world filled with dangers waiting in the shadows and in the light.",
         "page_num": 784,
-        "image_path": "./public/images/Eye_World.jpg"
+        "image": "/images/Eye_World.jpg"
     },
     {
         "title": "Assassin's Apprentice",
@@ -37,7 +37,7 @@
         "genre": "Fantasy, Fiction, Adult, Dark Fantasy",
         "description": "Young Fitz is the bastard son of the noble Prince Chivalry, raised in the shadow of the royal court by his father’s gruff stableman. He is treated as an outcast by all the royalty except the devious King Shrewd, who has him secretly tutored in the arts of the assassin. For in Fitz’s blood runs the magic Skill—and the darker knowledge of a child raised with the stable hounds and rejected by his family. As barbarous raiders ravage the coasts, Fitz is growing to manhood. Soon he will face his first dangerous, soul-shattering mission. And though some regard him as a threat to the throne, he may just be the key to the survival of the kingdom.",
         "page_num": 435,
-        "image_path": "./public/images/Assassins_Apprentice.jpg"
+        "image": "/images/Assassins_Apprentice.jpg"
     },
     {
         "title": "Alice's Adventures in Wonderland",
@@ -45,7 +45,7 @@
         "genre": "Fantasy, Fiction, Classic, Childrens, Adventure, Yound Adult",
         "description": "When Alice sees a white rabbit take a watch out of its waistcoat pocket she decides to follow it, and a sequence of most unusual events is set in motion. This mini book contains the entire topsy-turvy stories of Alice's Adventures in Wonderland and Through the Looking-Glass, accompanied by practical notes and Martina Pelouso's memorable full-colour illustrations.",
         "page_num": 320,
-        "image_path": "./public/images/Alice.jpg"
+        "image": "/images/Alice.jpg"
     },
     {
         "title": "Howl's Moving Castle",
@@ -53,7 +53,7 @@
         "genre": "Fantasy, Fiction, Romance, Young Adult, Magic, Adventure",
         "description": "Sophie has the great misfortune of being the eldest of three daughters, destined to fail miserably should she ever leave home to seek her fate. But when she unwittingly attracts the ire of the Witch of the Waste, Sophie finds herself under a horrid spell that transforms her into an old lady. Her only chance at breaking it lies in the ever-moving castle in the hills: the Wizard Howl's castle. To untangle the enchantment, Sophie must handle the heartless Howl, strike a bargain with a fire demon, and meet the Witch of the Waste head-on. Along the way, she discovers that there's far more to Howl—and herself—than first meets the eye.",
         "page_num": 329,
-        "image_path": "./public/images/Moving_Castle.jpg"
+        "image": "/images/Moving_Castle.jpg"
     },
     {
         "title": "Harry Potter and the Sorcerer's Stone",
@@ -61,7 +61,7 @@
         "genre": "Young Adult, Fiction, Magic, Adventure",
         "description": "Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry's eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!",
         "page_num": 333,
-        "image_path": "./public/images/Harry_Potter"
+        "image": "/images/Harry_Potter.jpg"
     },
     {
         "title": "The Hunger Games",
@@ -69,7 +69,7 @@
         "genre": "Young Adult, Fiction, Fantasy, Dystopia, Romance, Adventure",
         "description": "In the ruins of a place once known as North America lies the nation of Panem, a shining Capitol surrounded by 12 outlying districts. The Capitol keeps the districts in line by forcing them all to send one boy and one girl between the ages of 12 and 18 to participate in the annual Hunger Games, a fight to the death on live TV. Sixteen-year-old Katniss Everdeen regards it as a death sentence when she steps forward to take her sister's place in the Games. But Katniss has been close to death before - and survival, for her, is second nature. Still, if she is to win, she will have to start making choices that weigh survival against humanity and life against love. ",
         "page_num": 374,
-        "image_path": "./public/images/Hunger_Games.jpg"
+        "image": "/images/Hunger_Games.jpg"
     },
     {
         "title": "Battle Royale",
@@ -77,7 +77,7 @@
         "genre": "Horror, Fiction, Dystopia, Thriller, Yound Adult",
         "description": "Koushun Takami's notorious high-octane thriller is based on an irresistible premise: a class of junior high school students is taken to a deserted island where, as part of a ruthless authoritarian program, they are provided arms and forced to kill one another until only one survivor is left standing. Criticized as violent exploitation when first published in Japan - where it then proceeded to become a runaway bestseller - Battle Royale is a Lord of the Flies for the 21st century, a potent allegory of what it means to be young and (barely) alive in a dog-eat-dog world. Made into a controversial hit movie of the same name, Battle Royale is already a contemporary Japanese pulp classic, now available for the first time in the English language.",
         "page_num": 624,
-        "image_path": "./public/images/Battle_Royale.jpg"
+        "image": "/images/Battle_Royale.jpg"
     },
     {
         "title": "Tombs: Junji Ito Story Collection",
@@ -85,7 +85,7 @@
         "genre": "Manga, Horror, Graphic Novels, Short Stories, Fiction, Paranormal",
         "description": "Countless tombstones stand in rows throughout a small community, forming a bizarre tableau. What fate awaits a brother and sister after a traffic accident in this town of the dead? In another tale, a girl falls silent, her tongue transformed into a slug. Can a friend save her? Then, when a young man moves to a new town, he finds the house next door has only a single window. What does his grotesque neighbor want, calling out to him every evening from that lone window? Fresh nightmares brought to you by horror master Junji Ito.",
         "page_num": 344,
-        "image_path": "./public/images/Tombs.jpg"
+        "image": "/images/Tombs.jpg"
     }
 ]
 

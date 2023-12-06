@@ -34,8 +34,8 @@ Book.init(
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        image_path: {
-            type: DataTypes.BLOB('long'), 
+        image: {
+            type: DataTypes.STRING, 
             allowNull: false
         },
     },

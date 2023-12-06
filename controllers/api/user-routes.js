@@ -24,7 +24,7 @@ router.post('/signup', passport2.authenticate('signup'), async (req, res) => {
             req.session.loggedInUser = req.loggedInUser
             await sessionSaveWithPromise(req);
 
-            res.redirect('/dashboard');
+            res.redirect('/');
         }
         // const dbUserData = await User.create({
         //   username: req.body.username,
@@ -62,7 +62,7 @@ router.post('/login', passport.authenticate('login'), async  (req, res) => {
             req.session.loggedInUser = req.loggedInUser
             await sessionSaveWithPromise(req);
 
-            res.redirect('/dashboard');
+            res.redirect('/');
         }
 
     } catch (error) {

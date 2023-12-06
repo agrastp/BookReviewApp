@@ -1,16 +1,31 @@
-let enteredTitle = document.getElementById("title");
-let enteredContent = document.getElementById("content");
-let createReviewButton = document.getElementById("create-review-button");
+let enteredTitle = document.getElementById("review-title");
+let enteredContent = document.getElementById("review-content");
+let createReviewButton = document.getElementById("create-new-review-button");
 let updateReviewButton = document.getElementById("update-review-button");
 let deleteReviewButton = document.getElementById("delete-review-button");
 
+let trimmedTitle = undefined;
+let trimmedContent = undefined;
+
+
 //Listeners for buttons
 createReviewButton.addEventListener("click", createReview);
-updateReviewButton.addEventListener("click", updateReview);
-deleteReviewButton.addEventListener("click", deleteReview);
 
-//Fetch to post a review
-async function createReview(){
+
+if(updateReviewButton){
+
+    updateReviewButton.addEventListener("click", updateReview);
+}
+
+if(deleteReviewButton){
+
+    deleteReviewButton.addEventListener("click", deleteReview);
+}
+
+
+async function createReview(event){
+
+    event.preventDefault();
 
     try{
 
@@ -42,6 +57,9 @@ async function createReview(){
 
 //Fetch to update a review
 async function updateReview(event){
+    
+    event.preventDefault();
+
     try {
 
         if(performValidation() === true){
@@ -73,6 +91,8 @@ async function updateReview(event){
 //Fetch to delete a review
 async function deleteReview(event){
 
+    event.preventDefault();
+
     let id = event.target.dataset.editElementId;
     
     try {
@@ -98,19 +118,18 @@ function handleRedirection(response){
 
         document.location.href = "/login";
     
-    } else {
+    } else{
 
         document.location.href = "/";
-
     }
 }
 
 
 function performValidation(){
 
-    let trimmedTitle = enteredTitle.trim();
+    trimmedTitle = enteredTitle.value.trim();
 
-    let trimmedContent = enteredContent.trim();
+    trimmedContent = enteredContent.value.trim();
 
     let titleRegex = /^[a-zA-Z0-9 ][a-zA-Z0-9-:!? ]*[a-zA-Z0-9!? ]?$/
 
@@ -131,8 +150,8 @@ function generateBody(){
 
     let body = undefined;
 
-        body =  JSON.stringify({title: trimmedTitle.value, content: trimmedContent.value, book_id: 
-                                createReviewButton.dataset.book_id, user_id: createReviewButton.dataset.user_id})
+        body = JSON.stringify({title: trimmedTitle, content: trimmedContent, book_id: 
+                                createReviewButton.dataset.bookId, user_id: createReviewButton.dataset.userId})
     return body;
 }
 
