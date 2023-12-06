@@ -1,0 +1,41 @@
+<main class="custom-single-book-box">
+    <section class="custom-m-30 single-book columns">
+        <div class="column is-6">
+            {{!-- Villy: This is a placeholder --}}
+            <img class="image is-128x128">
+        </div>
+
+        <aside class="column is-6 single-book-lineheight">
+            <h2><strong>Title: </strong>{{title}}</h2>
+            <h2><strong>Author: </strong>{{author}}</h2>
+            <h2><strong>Genre: </strong>{{genre}}</h2>
+            <h2><strong>Pages: </strong>{{page_num}}</h2>
+            <p class="custom-mt-10"><strong>Description: </strong> {{description}}</p>
+        </aside>
+    </section>
+</main>
+
+{{!-- Villy: Hi, can we make it so the add review button only show up when logged in? --}}
+{{!-- {{#if loggedInUser}} --}}
+<section class="custom-add-review-button">
+    <div id="add-new-review" class="button">
+        <p data="{{id}}" class="add-new-review-button">+ New Review</p>
+    </div>
+</section>
+{{!-- {{/if}} --}}
+
+<section class="custom-book-reviews-section">
+{{#each reviews as |review|}}
+    <section class="box custom-review-box">
+        <h2 class="custom-review-title"><strong>{{review.title}}</strong></h2>
+        <p>{{review.content}}</p>
+        {{!-- Villy: Need to link the User with Book through Review --}}
+        <p class="custom-review-name-date">Posted by <span class="custom-text-light-blue">{{review.user.username}}</span> on {{format_date createdAt}}</p>
+    </section>
+{{/each}}
+</section>
+
+{{!-- Villy: To make it so user cannot interact with the single book page if not logged in --}}
+{{!-- {{#if loggedInUser}} --}}
+<script src="/js/book.js"></script>
+{{!-- {{/if}} --}}

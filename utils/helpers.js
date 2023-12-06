@@ -24,5 +24,9 @@ module.exports = {
 
         let uuid = uuidv4();
         return uuid;
-    }
+    },
+
+    format_date: (date) => {
+        return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${new Date(date).getFullYear()}`;
+    },
 }
