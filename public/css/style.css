@@ -51,6 +51,10 @@
     list-style: none;
 }
 
+.book-lists .custom-left-column li {
+    font-weight: bolder;
+}
+
 .book-description-box {
     border-top: solid black 1px;
     margin: 3%;
@@ -194,6 +198,10 @@
     color: white;
 }
 
+.display-below-576 {
+    display: none;
+}
+
 @media screen and (max-width: 576px) {
     .book-images {
         margin: 3%;
@@ -207,13 +215,26 @@
         color: rgb(192, 192, 192);
     }
 
-    .book-images {
-        
+    .custom-columns {
+        margin: 3%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .custom-left-column {
+        width: 20%;
+    }
+    /* -------------------------------------------- */
+    .custom-left-column {
+        display: none;
     }
 
-    .add-review-button-homepage {
-
+    .display-below-576 {
+        display: inline;
+        font-weight: bolder;
     }
+    
     
 }
 
