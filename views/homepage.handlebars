@@ -1,16 +1,22 @@
 {{!-- Seeded Book Information --}}
+<header>
+    <div class="center-image">
+        <img src="../public/images/BookBuzz_Logo.png" alt="Image of a book with bees flying out">
+    </div>
+</header>
 <section id="books-section" class="container">
-{{#each books as |book|}}
-    <section id="{{{generateUuid}}}" class="custom-books-section box">
-        <figure class="book-images">
+    {{#each books as |book|}}
+    <section id="{{{generateUuid}}}" class="custom-books-section box" class="flex-container">
+        <figure class="book-images"  class="image is-3by2">
             {{!-- Villy: will need to change this to fit the cover --}}
-            <img src="{{{book.image}}}" class="image is-128x128">
+            <img src="{{{book.image}}}" class="has-ratio" width="150" height="250">
             {{!-- Villy: Is loggedInUser the logged_in value? --}}
             {{#if ../loggedInUser}}
-                <button data="{{book.id}}" class="add-review-button-homepage button is-small">View Reviews</button>
+            <button data="{{book.id}}" class="add-review-button-homepage button is-small">View Reviews</button>
             {{/if}}
         </figure>
-        
+
+        </figure>
         {{!-- line 13 to line 28 will be changed to fit small screen --}}
         <section class="book-lists columns">
             <div class="column is-2">
@@ -29,10 +35,10 @@
         </section>
 
         <section class="book-description-box">
-            <p class="book-description">{{book.description}}</p>   
+            <p class="book-description">{{book.description}}</p>
         </section>
     </section>
-{{/each}}
+    {{/each}}
 </section>
 
 <script src="/js/homepage.js"></script>

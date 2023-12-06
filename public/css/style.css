@@ -45,6 +45,7 @@
 .custom-books-section {
     margin-top: 5%;
     margin-bottom: 5%;
+
 }
 
 .book-lists {
@@ -60,12 +61,20 @@
     margin: 3%;
     padding-top: 3%;
 }
+.flex-container {
+    display: flex;
+    justify-content: flex-end; /* Align items to the end of the container (right in this case) */
+    align-items: center; /* Center vertically */
+    height: 100vh;
+}
 
 .book-images {
-    margin: 3%;
+    max-width: 100%; /* Ensure the image does not exceed its container */
+    height: auto; 
+    /* margin: 3%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; */
 }
 
 /* Review Button */
