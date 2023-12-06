@@ -1,11 +1,10 @@
 <main class="custom-single-book-box">
     <section class="custom-m-30 single-book columns">
-        <div >
-            <figure class="book-images" class="image is-3by2">
-                <img src="{{{image}}}" class="has-ratio" width="150" height="250">
-            </figure>
+        <div class="column is-6">
+            {{!-- Villy: This is a placeholder --}}
+            <img class="image is-128x128">
         </div>
-{{!-- class="column is-6" --}}
+
         <aside class="column is-6 single-book-lineheight">
             <h2><strong>Title: </strong>{{title}}</h2>
             <h2><strong>Author: </strong>{{author}}</h2>
@@ -26,7 +25,6 @@
         </section>
     {{/unless}}
 {{/if}}
-
 
 {{#unless displayCudForm}}
     {{> review}}
