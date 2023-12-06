@@ -17,7 +17,14 @@
         </figure>
         {{!-- line 13 to line 28 will be changed to fit small screen --}}
         
-        <section class="book-lists">
+        <section class="book-lists custom-columns">
+            <div class="custom-left-column">
+                <li>Title:</li>
+                <li>Author: </li>
+                <li>Genre: </li>
+                <li>Pages:</li>
+            </div>
+
             <aside class="custom-right-column">
                 <li class="book-title"><span class="display-below-576">Title: </span>{{book.title}}</li>
                 <li class="book-author"><span class="display-below-576">Author: </span>{{book.author}}</li>
