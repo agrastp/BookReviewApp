@@ -17,7 +17,7 @@ Review.init(
             allowNull: false
         },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT('long'),
             allowNull: false
         },
         user_id: {
