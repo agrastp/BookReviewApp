@@ -1,25 +1,23 @@
 {{!-- Seeded Book Information --}}
+
 <section id="books-section" class="container">
-{{#each books as |book|}}
-    <section id="{{{generateUuid}}}" class="custom-books-section box">
-        <figure class="book-images">
+    {{#each books as |book|}}
+    <section id="{{{generateUuid}}}" class="custom-books-section box" class="flex-container">
+        <figure class="book-images"  class="image is-3by2">
             {{!-- Villy: will need to change this to fit the cover --}}
+
             <img data="{{book.id}}" src="{{{book.image}}}" class="image is-128x128 book-image-redirect">
+            
             {{!-- Villy: Is loggedInUser the logged_in value? --}}
             {{#if ../loggedInUser}}
-                <button data="{{book.id}}" class="add-review-button-homepage button is-small">View Reviews</button>
+            <button data="{{book.id}}" class="add-review-button-homepage button is-small">View Reviews</button>
             {{/if}}
         </figure>
-        
-        {{!-- line 13 to line 28 will be changed to fit small screen --}}
-        <section class="book-lists custom-columns">
-            <div class="custom-left-column">
-                <li>Title:</li>
-                <li>Author: </li>
-                <li>Genre: </li>
-                <li>Pages:</li>
-            </div>
 
+        </figure>
+        {{!-- line 13 to line 28 will be changed to fit small screen --}}
+        
+        <section class="book-lists">
             <aside class="custom-right-column">
                 <li class="book-title"><span class="display-below-576">Title: </span>{{book.title}}</li>
                 <li class="book-author"><span class="display-below-576">Author: </span>{{book.author}}</li>
@@ -29,10 +27,10 @@
         </section>
 
         <section class="book-description-box">
-            <p class="book-description">{{book.description}}</p>   
+            <p class="book-description">{{book.description}}</p>
         </section>
     </section>
-{{/each}}
+    {{/each}}
 </section>
 
 <script src="/js/homepage.js"></script>
