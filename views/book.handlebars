@@ -1,11 +1,12 @@
+
 <main class="custom-single-book-box">
     <section class="custom-m-30 single-book columns">
-        <div >
+        <div>
             <figure class="book-images" class="image is-3by2">
                 <img src="{{{image}}}" class="has-ratio" width="150" height="250">
             </figure>
         </div>
-{{!-- class="column is-6" --}}
+        {{!-- class="column is-6" --}}
         <aside class="column is-6 single-book-lineheight">
             <h2><strong>Title: </strong>{{title}}</h2>
             <h2><strong>Author: </strong>{{author}}</h2>
@@ -18,22 +19,22 @@
 
 {{!-- Villy: Hi, can we make it so the add review button only show up when logged in? --}}
 {{#if loggedInUser}}
-    {{#unless displayCudForm}}
-        <section class="custom-add-review-button">
-            <section id="add-new-review" class="button">
-                <button id="add-new-review-button" data="{{id}}">+ New Review</button>
-            </section>
-        </section>
-    {{/unless}}
+{{#unless displayCudForm}}
+<section class="custom-add-review-button">
+    <section id="add-new-review" class="button">
+        <button id="add-new-review-button" data="{{id}}">+ New Review</button>
+    </section>
+</section>
+{{/unless}}
 {{/if}}
 
 
 {{#unless displayCudForm}}
-    {{> review}}
+{{> review}}
 {{/unless}}
 
 {{#if displayCudForm}}
-    {{> create-update-delete-review}}
+{{> create-update-delete-review}}
 {{/if}}
 
 {{!-- Villy: To make it so user cannot interact with the single book page if not logged in --}}

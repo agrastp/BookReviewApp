@@ -3,33 +3,28 @@
 <section id="books-section" class="container">
     {{#each books as |book|}}
     <section id="{{{generateUuid}}}" class="custom-books-section box" class="flex-container">
-        <figure class="book-images"  class="image is-3by2">
-            {{!-- Villy: will need to change this to fit the cover --}}
-
-            <img data="{{book.id}}" src="{{{book.image}}}" class="image is-128x128 book-image-redirect">
-            
-            {{!-- Villy: Is loggedInUser the logged_in value? --}}
-            {{#if ../loggedInUser}}
-            <button data="{{book.id}}" class="add-review-button-homepage button is-small">View Reviews</button>
-            {{/if}}
-        </figure>
-
-        </figure>
-        {{!-- line 13 to line 28 will be changed to fit small screen --}}
-        
-        <section class="book-lists custom-columns">
-            <div class="custom-left-column">
-                <li>Title:</li>
-                <li>Author: </li>
-                <li>Genre: </li>
-                <li>Pages:</li>
+        <section class="section">
+            <div class="container custom-container">
+                <div class="columns is-mobile is-multiline">
+                    <div class="column is-full-mobile is-half-tablet">
+                        <img class="custom-image" data="{{book.id}}" src="{{{book.image}}}">
+                    </div>
+                    <div class="column is-full-mobile is-half-tablet has-text-right">
+                        {{#if ../loggedInUser}}
+                        <button data="{{book.id}}" class="add-review-button-homepage button is-primary" >View Reviews</button>
+                        {{/if}}
+                    </div>
+                </div>
             </div>
+        </section>
 
+
+        <section class="book-lists custom-columns">
             <aside class="custom-right-column">
-                <li class="book-title"><span class="display-below-576">Title: </span>{{book.title}}</li>
-                <li class="book-author"><span class="display-below-576">Author: </span>{{book.author}}</li>
-                <li class="book-genre"><span class="display-below-576">Genre: </span>{{book.genre}}</li>
-                <li class="book-page_num"><span class="display-below-576">Pages: </span>{{book.page_num}}</li>
+                <li class="book-title" class="display-below-576"><span>Title:</span> {{book.title}}</li>
+                <li class="book-author"><span class="display-below-576">Author: </span> {{book.author}}</li>
+                <li class="book-genre"><span class="display-below-576">Genre: </span> {{book.genre}}</li>
+                <li class="book-page_num"><span class="display-below-576">Pages: </span> {{book.page_num}}</li>
             </aside>
         </section>
 

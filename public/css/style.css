@@ -34,8 +34,6 @@
 }
 
 .center-image img {
-    /* max-width: 25%;
-    height: 25%; */
     padding: 0px 40px 40px;
 }
 
@@ -52,23 +50,24 @@
 }
 
 /* Book List with information about the book */
+
+#review-button{
+    align-items: right;
+}
+
 .custom-books-section {
     margin-top: 5%;
     margin-bottom: 5%;
 
 }
 
-
 .book-lists {
     margin: 3%;
     line-height: 1.5;
 }
+
 .book-lists li {
     list-style: none;
-}
-
-.book-lists .custom-left-column li {
-    font-weight: bolder;
 }
 
 .book-description-box {
@@ -87,10 +86,10 @@
 }
 
 /* Review Button */
-.add-review-button-homepage {
+/* .add-review-button-homepage {
     background-color: azure;
     color: rgb(192, 192, 192);
-}
+} */
 
 /* Review Form */
 .custom-add-review-form {
@@ -164,99 +163,5 @@
 }
 
 .custom-text-light-blue {
-
-    color:rgb(188, 223, 252);
-}
-
-.book-image-redirect {
-    cursor: pointer;
-}
-
-.custom-columns {
-    margin: 3%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-}
-
-.custom-left-column {
-    width: 20%;
-}
-
-.custom-reviews-box {
-    border: ridge .5px black;
-}
-
-.custom-review-createdOn {
-    border-bottom: double 1px black;
-    padding-bottom: 5px;
-    margin-bottom: 8px;
-}
-
-.custom-user-review-title {
-    font-size: larger;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.custom-edit-delete-field {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.custom-user-edit-button {
-    background-color: rgb(137, 253, 253);
-    color: white;
-}
-
-.custom-user-delete-button {
-    background-color: rgb(255, 160, 160);
-    color: white;
-}
-
-.display-below-576 {
-    display: none;
-}
-
-@media screen and (max-width: 576px) {
-    .book-images {
-        margin: 3%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .add-review-button-homepage {
-        background-color: azure;
-        color: rgb(192, 192, 192);
-    }
-
-    .custom-columns {
-        margin: 3%;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-    }
-    
-    .custom-left-column {
-        width: 20%;
-    }
-    /* -------------------------------------------- */
-    .custom-left-column {
-        display: none;
-    }
-
-    .display-below-576 {
-        display: inline;
-        font-weight: bolder;
-    }
-    
-    
-}
-
-@media screen and (max-width: 350px) {
-
+    color:rgb(137, 195, 242);
 }
