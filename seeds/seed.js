@@ -16,7 +16,7 @@ const seedDatabase = async () => {
 
     let userDataWithHashedPasswords = await hashMultiplePasswords(userData);
     
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
 
     await User.bulkCreate(userDataWithHashedPasswords, {
         individualHooks: true,
