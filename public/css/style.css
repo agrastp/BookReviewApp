@@ -221,6 +221,12 @@
     display: none;
 }
 
+.fit-content {
+
+    width: fit-content;
+    height: fit-content;
+}
+
 @media screen and (max-width: 576px) {
     .book-images {
         margin: 3%;
