@@ -1,17 +1,24 @@
-function getReviewToBeEdited(req, bookReviews){
+function getReviewToBeEdited(reviewId, bookReviews){
 
     reviewInQuestion = bookReviews.find(function(review){
 
-        console.log("review id", review.id)
-        console.log("req.query.reviewId", req.query.reviewId)
+        if(review.id === parseInt(reviewId)){
 
-        if(review.id === parseInt(req.query.reviewId)){
-
-            return review
+            return review.id
         }
     });
 
-    return reviewInQuestion;
+    if(reviewInQuestion){
+
+        return reviewInQuestion;
+    }
+
+    else {
+
+        return null;
+    }
+
+    
 }
 
 module.exports = getReviewToBeEdited;

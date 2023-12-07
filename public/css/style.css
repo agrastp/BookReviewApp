@@ -1,6 +1,5 @@
 *{
     box-sizing: border-box;
-    overflow: auto;
 }
 
 /* Imported font family */
@@ -26,7 +25,7 @@
 
 #welcome-line {
     padding: 10px;
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: darkgreen;
 }
 /* Header with Logo */
@@ -179,7 +178,7 @@
 }
 
 .custom-left-column {
-    width: 20%;
+    width: 12%;
 }
 
 .custom-reviews-box {
@@ -243,6 +242,10 @@ so I defined my own custom class. */
     text-align: center;
 }
 
+.overflow-hidden{
+    overflow: hidden;
+}
+
 html{
 
     min-width: 150px;
@@ -264,16 +267,9 @@ a {
     justify-content: center;
 }
 
-@media screen and (max-width: 576px) {
-    /* to make the title, author, and etc. stick to their description */
-    .custom-left-column {
-        display: none;
-    }
+.welcome-text {
 
-    .display-below-576 {
-        display: inline;
-        font-weight: bolder;
-    }
+    font-size: 0.5em;
 }
 
 @media screen and (max-width: 1023px){
@@ -283,6 +279,23 @@ a {
         margin-left: auto;
         margin-right: auto;
         width: 90vw;
+    }
+
+    .margin-container {
+
+        margin: 0 0.5em
+    }
+}
+
+@media screen and (max-width: 576px) {
+    /* to make the title, author, and etc. stick to their description */
+    .custom-left-column {
+        display: none;
+    }
+
+    .display-below-576 {
+        display: inline;
+        font-weight: bolder;
     }
 }
 
@@ -298,11 +311,16 @@ a {
 
         margin-top: 1.25em;
     }
+
+    #welcome-line {
+
+        font-size: 4vw;
+    }
 }
 
 @media screen and (max-width: 375px) {
 
-    a {
+    .shrinking-text {
         font-size: 5vw;
     }
 
@@ -317,6 +335,17 @@ a {
         padding-left: 0.25em;
         padding-right: 0.25em;
         font-size: 5vw;
+    }
+
+    .flex-column-mobile {
+
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .no-left-padding-mobile{
+
+        padding-left: 0;
     }
     
 }

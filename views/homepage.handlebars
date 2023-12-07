@@ -1,13 +1,13 @@
 {{!-- Seeded Book Information --}}
 
-<section id="books-section" class="container">
+<section id="books-section" class="container margin-container">
     {{#each books as |book|}}
     <section id="{{{generateUuid}}}" class="custom-books-section box has-background-link-light" class="flex-container">
         <section>
             <figure class="book-images is-flex">
                 <img data="{{book.id}}" src="{{{book.image}}}" class="book-image-redirect" width="135" height="225">
                 {{#if ../loggedInUser}}
-                <button data="{{book.id}}" class="add-review-button-homepage button is-primary px-5">View Reviews</button>
+                <button data="{{book.id}}" class="add-review-button-homepage button resizing-button is-primary px-5">View Reviews</button>
                 {{/if}}
             </figure>
         </section>

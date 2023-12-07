@@ -46,19 +46,23 @@
                             {{/if}}
                         </section>
                         {{#if (equals logInOrSignUp "Log In")}}
-                        <section>
-                            <h4>Don't have an account? <a id="signup-redirect" href="/signup" class="has-text-centered">Click here</a></h4>
+                        <section class="is-flex flex-column-mobile shrinking-text">
+                            <h4>Don't have an account?</h4>
+                            <a id="signup-redirect" class="no-left-padding-mobile" href="/signup">Click here</a>
                         </section>
                         {{/if}}
                         {{#if (equals logInOrSignUp "Sign Up")}}
-                            <section>
-                                <h4>Already have an account? <a id="login-redirect" href="/login" class="has-text-centered">Click here</a></h4>
+                            <section class="is-flex flex-column-mobile shrinking-text">
+                                <h4>Already have an account?</h4>
+                                <a id="login-redirect" class="no-left-padding-mobile" href="/login">Click here</a>
                             </section>
                         {{/if}}
                     </form>
-                    <section>
-                        <p id="error-message">{{{errorMessage}}}</p>
-                    </section>
+                    {{#if errorMessage}}
+                        <section class="has-text-centered mt-3 has-background-danger-dark box">
+                            <p id="login-signup-error-message" class="has-text-primary-light">{{{errorMessage}}}</p>
+                        </section>
+                    {{/if}}
                 </section>
             </section>
         </section>
