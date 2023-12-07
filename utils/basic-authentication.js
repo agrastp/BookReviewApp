@@ -1,15 +1,15 @@
 
-/* I, Gabriel, basically took this function from activity 20 of module 14.  If the user isn't authenticated, it
-redirects him or her to the login page.*/
+/* If the user isn't authenticated, this method redirects the user to the login page.*/
 function baseAuthenticateWhetherLoggedIn(req, res, next){
 
-    if (!req.session.loggedInUser) {
+    //The isAuthenticated method is implemented by Passport.
+    if (req.isAuthenticated()) {
 
-        res.redirect('/login');
+        next();
 
     } else {
 
-        next();
+        res.redirect('/login');
     }
 }
 

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Book, Review, User } = require('../models');
-const baseAuthenticateWhetherLoggedIn = require('../utils/basic-authentication.js')
+const baseAuthenticateWhetherLoggedIn = require('../utils/basic-authentication.js');
+const getReviewToBeEdited = require('../utils/get-review-to-be-edited.js');
 // Import the custom middleware
 // const withAuth = require('../utils/auth'); 
 
@@ -62,13 +63,7 @@ router.get('/book/:id', async (req, res) => {
 
             newElement = false;
 
-            reviewInQuestion = book.reviews.find(function(review){
-
-                if(review.id === parseInt(req.query.reviewId)){
-        
-                    return review
-                }
-            });
+            reviewInQuestion = getReviewToBeEdited(req, book.reviews);
         }
 
         if(req.query.valid === "false"){
@@ -184,31 +179,46 @@ router.get('/signup', async (req, res) => {
 });
 
 //Renders the dashboard 
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', baseAuthenticateWhetherLoggedIn, async (req, res) => {
     
     try {
-        console.log(req.session)
-        // Villy: Error here, might need to change
+
         const userData = await User.findByPk(req.session.loggedInUser.id, {
             order: [['createdAt', 'DESC']],
             attributes: {exclude: ['password']},
             include: [{model: Review, include: [{model: Book}]}]
         });
 
-        // include: [
-        //     { model: Review, include: [
-        //         { model: User }
-        //     ]}
-        // ]
-        
         const user = userData.get({plain: true});
+
+        let reviewInQuestion = undefined;
+
+        let displayCudForm = undefined;
+
+        if(req.query.editReview === "true"){
+
+            displayCudForm = true;
+            reviewInQuestion = getReviewToBeEdited(req, user.reviews);
+            user.reviews = [reviewInQuestion];
+        }
+
+        if (user.reviews.length === 0){
+
+            user.reviews = null;
+        }
+
+        let dashboard = true;
+
+        
 
         console.log(user);
 
         // res.set('Cache-Control', 'no-store');
         res.render('dashboard', {
             ...user,
-            
+            displayCudForm,
+            dashboard,
+            reviewInQuestion,
             loggedInUser: req.session.loggedInUser,
             loggedInUsername: req.session.loggedInUser.username
         })
@@ -217,6 +227,13 @@ router.get('/dashboard', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+        // include: [
+        //     { model: Review, include: [
+        //         { model: User }
+        //     ]}
+        // ]
+        
 
 // Villy: sorry I don't know how the passport tool works,
 //        can you make this route go through the passport verification?
