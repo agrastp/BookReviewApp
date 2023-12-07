@@ -5,15 +5,12 @@
     <section id="{{{generateUuid}}}" class="custom-books-section box has-background-link-light" class="flex-container">
         <section>
             <figure class="book-images is-flex">
-                {{!-- Villy: will need to change this to fit the cover --}}
                 <img data="{{book.id}}" src="{{{book.image}}}" class="book-image-redirect" width="135" height="225">
-                {{!-- Villy: Is loggedInUser the logged_in value? --}}
                 {{#if ../loggedInUser}}
                 <button data="{{book.id}}" class="add-review-button-homepage button resizing-button is-primary px-5">View Reviews</button>
                 {{/if}}
             </figure>
         </section>
-        {{!-- line 13 to line 28 will be changed to fit small screen --}}
         
         <section class="book-lists custom-columns">
             <div class="custom-left-column">

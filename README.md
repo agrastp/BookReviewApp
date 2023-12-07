@@ -62,7 +62,7 @@
   Name: Pamela Agrast, Villy Yeoh, Gabriel Morrow<br>
   Repository: https://github.com/agrastp/book-review-application<br>
   E-mail: Pamela Agrast- agrastp@yahoo.com <br>
-          Villy Yeoh- <br>
+          Villy Yeoh- yeohvilly@gmail.com<br>
           Gabriel Morrow - theboss1485@gmail.com <br>
   
   

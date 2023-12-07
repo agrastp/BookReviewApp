@@ -29,7 +29,7 @@ User.belongsToMany(Book, {
     },
     as: 'user_idk',
 });
-
+ 
 Book.belongsToMany(User, {
     through: {
         model: Review,

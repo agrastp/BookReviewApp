@@ -18,7 +18,6 @@ const seedDatabase = async () => {
     
     await sequelize.sync({ force: false });
 
-    // Villy: I will come back and change it when necessary
     await User.bulkCreate(userDataWithHashedPasswords, {
         individualHooks: true,
         returning: true,
