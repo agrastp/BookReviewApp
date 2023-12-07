@@ -31,8 +31,6 @@ async function createReview(event){
 
     event.preventDefault();
 
-
-
     try{
 
         if(performValidation() === true){
@@ -123,6 +121,10 @@ function handleRedirection(event, response){
     if(response.url.slice(-5) === "login"){
 
         document.location.href = "/login";
+
+    } else if(document.location.href.includes("/dashboard")){
+
+        document.location.href = "/dashboard";
     
     } else{
 

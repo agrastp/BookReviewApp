@@ -26,7 +26,9 @@
             <button id="create-new-review-button" class="button" data-book-Id="{{{id}}}" data-user-Id="{{{loggedInUser.id}}}">Post Review</button>
         {{else}}
             <button id="update-review-button" class="button" data-book-Id="{{{id}}}" data-user-Id="{{{loggedInUser.id}}}" data-review-Id="{{{reviewInQuestion.id}}}">Update Review</button>
-            <button id="delete-review-button" class="button" data-book-Id="{{{id}}}" data-review-Id="{{{reviewInQuestion.id}}}">Delete Review</button>
+            {{#unless dashboard}}
+                <button id="delete-review-button" class="button" data-book-Id="{{{id}}}" data-review-Id="{{{reviewInQuestion.id}}}">Delete Review</button>
+            {{/unless}}
         {{/if}}
     </section>
     {{#if errorMessage}}
