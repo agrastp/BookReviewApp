@@ -1,3 +1,8 @@
+*{
+    box-sizing: border-box;
+    overflow: auto;
+}
+
 /* Imported font family */
 
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus&family=Montserrat&family=Playfair+Display&display=swap');
@@ -88,8 +93,7 @@
 
 /* Review Button */
 .add-review-button-homepage {
-    background-color: azure;
-    color: rgb(192, 192, 192);
+    
 }
 
 /* Review Form */
@@ -223,8 +227,46 @@
 
 .fit-content {
 
-    width: fit-content;
-    height: fit-content;
+    width: 100%;
+    padding: auto;
+}
+
+/* For some reason, Bulma's flex classes didn't seem to be working the way I wanted,
+so I defined my own custom class. */
+.is-flex-column{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.flex-item {
+
+    width: 100%;
+    text-align: center;
+}
+
+html{
+
+    min-width: 150px;
+}
+
+header {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+}
+
+a {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.justify-center{
+
+    justify-content: center;
 }
 
 @media screen and (max-width: 576px) {
@@ -259,10 +301,49 @@
         display: inline;
         font-weight: bolder;
     }
-    
-    
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 1023px){
 
+    .custom-container{
+
+        margin-left: auto;
+        margin-right: auto;
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .book-images {
+
+        flex-direction: column;
+        width: 46%;
+    }
+
+    .add-review-button-homepage {
+
+        margin-top: 1.25em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+
+    a {
+        font-size: 5vw;
+    }
+
+    .less-padding{
+
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+    }
+
+    .resizing-button{
+
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+        font-size: 5vw;
+    }
+    
 }

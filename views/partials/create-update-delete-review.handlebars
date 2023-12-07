@@ -21,19 +21,20 @@
             
         </section>
     </section>
-    <section class="custom-create-new-review-form">
+    <section class="custom-create-new-review-form is-flex justify-center resizing-section">
         {{#if newElement}}
-            <button id="create-new-review-button" class="button" data-book-Id="{{{id}}}" data-user-Id="{{{loggedInUser.id}}}">Post Review</button>
+            <button id="create-new-review-button" class="button is-primary mx-2" data-book-Id="{{{id}}}" data-user-Id="{{{loggedInUser.id}}}">Post Review</button>
         {{else}}
-            <button id="update-review-button" class="button" data-book-Id="{{{id}}}" data-user-Id="{{{loggedInUser.id}}}" data-review-Id="{{{reviewInQuestion.id}}}">Update Review</button>
+            <button id="update-review-button" class="button resizing-button is-primary mx-2" data-book-Id="{{{id}}}" 
+            data-user-Id="{{{loggedInUser.id}}}" data-review-Id="{{{reviewInQuestion.id}}}">Update Review</button>
             {{#unless dashboard}}
-                <button id="delete-review-button" class="button" data-book-Id="{{{id}}}" data-review-Id="{{{reviewInQuestion.id}}}">Delete Review</button>
+                <button id="delete-review-button" class="button resizing-button is-primary mx-2" data-book-Id="{{{id}}}" data-review-Id="{{{reviewInQuestion.id}}}">Delete Review</button>
             {{/unless}}
         {{/if}}
     </section>
     {{#if errorMessage}}
-        <section>
-            <p id="error-message">{{{errorMessage}}}</p>
+        <section class="has-text-centered mt-3 has-background-danger-dark box">
+            <p id="error-message" class="has-text-primary-light">{{{errorMessage}}}</p>
         </section>
     {{/if}}
 </form>

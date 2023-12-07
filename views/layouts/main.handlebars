@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -15,29 +15,30 @@
 </head>
 
 <body>
-    <header class="box custom-header">
-        <section id="navbar-section">
+    <header class="box custom-header is-flex-column">
+        <section id="navbar-section" class="mb-4 flex-item">
             {{!-- col-3 justify-content-between --}}
             {{!-- Navigation --}}
-            <nav class="navbar-item is-arrowless custom-navbar">
-                <a href="/" id="home-link">Home</a>
-                <a href="/dashboard" id="dashboard-link">Dashboard</a>
+            <nav class="navbar-item is-arrowless custom-navbar flex-item justify-center">
+                <a href="/" id="home-link" class="pl-1 pr-4">Home</a>
+                <a href="/dashboard" id="dashboard-link" class="less-padding">Dashboard</a>
                 {{#if loggedInUser}}
-                    <a id="login-link" href="/api/users/logout" class="custom-login-logout-button">Logout</a>
+                    <a id="login-link" href="/api/users/logout" class="custom-login-logout-button less-padding">Logout</a>
                 {{else}}
-                    <a id="login-link" href="/login" class="custom-login-logout-button">Login</a>
+                    <a id="login-link" href="/login" class="custom-login-logout-button less-padding">Login</a>
                 {{/if}}
             </nav>
         </section>
-        <section id="welcome-bar" class="medium-text">
+        <section class="center-image" class="image is-square flex-item">
+            <img src="/images/BookBuzz_Logo.png" alt="Image of a book with bees flying out" class="has-ratio" width="350" height="350">
+        </section>
+        <section id="welcome-bar" class="medium-text is-flex-grow-1">
             {{#if loggedInUser}}
-                <p id="welcome-line" class="d-block">Welcome, <b>{{{loggedInUser.username}}}</b></p>
+                <p id="welcome-line" class="mt-0 pt-0">Welcome, <b>{{{loggedInUser.username}}}</b></p>
             {{/if}}
         </section>
         {{!-- Logo Image --}}
-        <div class="center-image" class="image is-square">
-            <img src="./images/BookBuzz_Logo.png" alt="Image of a book with bees flying out" class="has-ratio" width="300" height="300">
-        </div>
+        
 
     </header>
 
