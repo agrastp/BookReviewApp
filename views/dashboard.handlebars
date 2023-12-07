@@ -1,10 +1,10 @@
 {{!-- Villy: hasn't been tested --}}
 {{!-- Still need to test the html css and stuffs --}}
-<main class="container">
+<section class="container">
 
 {{#if reviews}}
     {{#each reviews as |review|}}
-        <section data="{{review.book.id}}" class="box custom-reviews-box">
+        <section data="{{review.book.id}}" class="box custom-reviews-box custom-container">
             <p class="custom-review-createdOn"><strong>{{review.book.title}}</strong>'s review created on {{format_date createdAt}}</p>
             <h2 class="custom-user-review-title">{{review.title}}</h2>
             <p>{{review.content}}</p>
@@ -20,12 +20,12 @@
         {{> create-update-delete-review}}
     {{/if}}
 {{else}}
-    <section id="no-reviews-section" class="d-flex justify-content-center">
+    <section id="no-reviews-section" class="is-flex justify-content-center">
         <p>You haven't made any reviews yet.  To make a review, visit the home page, click the <b>View Reviews</b> 
             button for a specific book, and then click the + New Review button to add a review.</p>
     </section>
 
 {{/if}}
 
-</main>
+</section>
 <script src="/js/dashboard.js"></script>

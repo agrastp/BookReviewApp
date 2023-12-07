@@ -1,4 +1,4 @@
-<main class="custom-single-book-box">
+<section class="custom-single-book-box has-background-link-light pt-2">
     <section class="custom-m-30 single-book columns">
         <div >
             <figure class="book-images" class="image is-3by2">
@@ -14,14 +14,14 @@
             <p class="custom-mt-10"><strong>Description: </strong> {{description}}</p>
         </aside>
     </section>
-</main>
+</section>
 
 {{!-- Villy: Hi, can we make it so the add review button only show up when logged in? --}}
 {{#if loggedInUser}}
     {{#unless displayCudForm}}
         <section class="custom-add-review-button">
-            <section id="add-new-review" class="button">
-                <button id="add-new-review-button" data="{{id}}">+ New Review</button>
+            <section id="add-new-review">
+                <button id="add-new-review-button"  class="button is-primary" data="{{id}}">+ New Review</button>
             </section>
         </section>
     {{/unless}}
