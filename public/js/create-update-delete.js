@@ -15,7 +15,6 @@ if(createReviewButton){
 }
 
 
-
 if(updateReviewButton){
 
     updateReviewButton.addEventListener("click", updateReview);

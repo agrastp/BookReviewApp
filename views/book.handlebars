@@ -1,3 +1,5 @@
+{{!-- this page shows the single book that you clicked on, 
+and inside you can see all the reviews that has been posted by other users --}}
 <section class="custom-single-book-box has-background-link-light pt-2">
     <section class="custom-m-30 single-book columns">
         <div >
@@ -5,8 +7,8 @@
                 <img src="{{{image}}}" class="has-ratio" width="150" height="250">
             </figure>
         </div>
-{{!-- class="column is-6" --}}
-        <aside class="column is-6 single-book-lineheight">
+
+        <aside class="column single-book-lineheight">
             <h2><strong>Title: </strong>{{title}}</h2>
             <h2><strong>Author: </strong>{{author}}</h2>
             <h2><strong>Genre: </strong>{{genre}}</h2>
@@ -16,12 +18,11 @@
     </section>
 </section>
 
-{{!-- Villy: Hi, can we make it so the add review button only show up when logged in? --}}
 {{#if loggedInUser}}
     {{#unless displayCudForm}}
         <section class="custom-add-review-button">
             <section id="add-new-review">
-                <button id="add-new-review-button"  class="button is-primary" data="{{id}}">+ New Review</button>
+                <p id="add-new-review-button"  class="button is-primary" data="{{id}}">+ New Review</p>
             </section>
         </section>
     {{/unless}}
@@ -36,7 +37,7 @@
     {{> create-update-delete-review}}
 {{/if}}
 
-{{!-- Villy: To make it so user cannot interact with the single book page if not logged in --}}
-{{!-- {{#if loggedInUser}} --}}
+{{!-- Villy: I added this if statement to make it so user cannot interact with the single book page if not logged in --}}
+{{#if loggedInUser}}
 <script src="/js/book.js"></script>
-{{!-- {{/if}} --}}
+{{/if}}

@@ -228,15 +228,6 @@ router.get('/dashboard', baseAuthenticateWhetherLoggedIn, async (req, res) => {
     }
 });
 
-        // include: [
-        //     { model: Review, include: [
-        //         { model: User }
-        //     ]}
-        // ]
-        
-
-// Villy: sorry I don't know how the passport tool works,
-//        can you make this route go through the passport verification?
 router.get('/create-update-delete-review/:id', baseAuthenticateWhetherLoggedIn, async (req, res) => {
     try {
         console.log(req.params);

@@ -1,7 +1,5 @@
-{{!-- Villy: hasn't been tested --}}
-{{!-- Still need to test the html css and stuffs --}}
 <section class="container">
-
+{{!-- this page shows user's posted reviews and their corresponding book --}}
 {{#if reviews}}
     {{#each reviews as |review|}}
         <section data="{{review.book.id}}" class="box custom-reviews-box custom-container">
