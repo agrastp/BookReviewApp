@@ -14,6 +14,12 @@ loginSignupButton.addEventListener('click', (event) =>{
     }
 });
 
+if(window.location.href.endsWith('false') || window.location.href.endsWith('true')){
+
+    let errorMessage = document.getElementById("login-signup-error-message");
+    errorMessage.scrollIntoView({behavior: "smooth"})
+}
+
 let usernameInput = document.getElementById('username-input');
 let passwordInput = document.getElementById('password-input');
 let emailInput = document.getElementById('email-input');

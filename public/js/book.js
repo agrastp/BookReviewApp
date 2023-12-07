@@ -1,5 +1,11 @@
 let addReviewButton = document.getElementById('add-new-review-button');
-let editReviewButtons = document.querySelectorAll("[id^='edit-delete-review-button']")
+let editReviewButtons = document.querySelectorAll("[id^='edit-delete-review-button']");
+
+if(window.location.href.endsWith('false')){
+
+    let cudErrorMessage = document.getElementById("cud-error-message");
+    cudErrorMessage.scrollIntoView({behavior: "smooth"});
+}
 
 // Villy: determined the ID
 const redirectToCreateReview = (event) => {
