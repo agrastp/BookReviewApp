@@ -47,7 +47,7 @@ async function createReview(event){
     
         } else {
     
-            document.location.href = `/book/${event.target.dataset.bookId}?displayCudForm=true&newElement=false&reviewId=${event.target.dataset.reviewId}&valid=false`
+            document.location.href = `/book/${event.target.dataset.bookId}?displayCudForm=true&newElement=true&valid=false`;
         }
     
     } catch (error){

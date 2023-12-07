@@ -188,7 +188,7 @@ router.get('/signup', async (req, res) => {
         
         } else if (req.query.invalidEmail === "true"){
 
-            errorMessage = "Email addresses must be entered in the format of someone@example.com, with no less than two and no" + 
+            errorMessage = "Email addresses must be entered in the format of test@example.com, with no less than two and no" + 
                            "more than six characters for the top-level domain.  Try again."
         }
         

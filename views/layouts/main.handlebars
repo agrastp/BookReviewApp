@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -17,7 +16,7 @@
 <body>
     <header class="box custom-header is-flex-column">
         <section id="navbar-section" class="mb-4 flex-item">
-            {{!-- col-3 justify-content-between --}}
+
             {{!-- Navigation --}}
             <nav class="navbar-item is-arrowless custom-navbar flex-item justify-center">
                 <a href="/" id="home-link" class="pl-1 pr-4 shrinking-text">Home</a>
@@ -40,7 +39,7 @@
         </section>
         {{#if invalidRedirection}}
             <section id="redirection-error" class="has-text-centered mt-3 has-background-danger-dark box has-text-light">
-                <p id="redirection-error-message">{{invalidRedirection}}</p>
+                <p id="redirection-error-message" class="error-message-text">{{invalidRedirection}}</p>
             </section>        
         {{/if}}
         {{!-- Logo Image --}}

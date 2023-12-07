@@ -102,6 +102,11 @@
     flex-direction: row;
     justify-content: flex-end;
 }
+
+.error-message-text {
+
+    font-size: 1.25em;
+}
  
 .single-book-lineheight h2 {
     line-height: 2;
@@ -308,7 +313,7 @@ a {
     }
 
     .add-review-button-homepage {
-
+        
         margin-top: 1.25em;
     }
 
