@@ -14,8 +14,9 @@ loginSignupButton.addEventListener('click', (event) =>{
     }
 });
 
-let  usernameInput = document.getElementById('username-input');
+let usernameInput = document.getElementById('username-input');
 let passwordInput = document.getElementById('password-input');
+let emailInput = document.getElementById('email-input');
 
 
 async function loginFormHandler(event){
@@ -28,6 +29,7 @@ async function loginFormHandler(event){
 
 
     if (username && password) {
+        
         const response = await fetch('/api/users/login', {
             method: 'POST',
             body: JSON.stringify({username, password}),
@@ -55,16 +57,31 @@ async function signupFormHandler(event) {
     event.preventDefault()
 
     let username = usernameInput.value.trim();
-    let email = undefined
+    let email = emailInput.value.toLowerCase().trim();
     let password = passwordInput.value.trim();
+
+
+    
 
 
     if (username && password) {
 
-        if(!email){
+        if(email){
+
+            let emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+            let validEmail = emailRegex.test(email);
+
+            if(!validEmail){
+                
+                window.location.replace('/signup?invalidEmail=true');
+                return;
+            }
+        
+        } else {
 
             email = null;
         }
+
         const response = await fetch('api/users/signup', {
             method: 'POST',
             body: JSON.stringify({username, email, password}),
@@ -84,6 +101,11 @@ async function signupFormHandler(event) {
         if(response.url.endsWith('invalidUsername=true') === true && response.redirected === true){
 
             document.location.href = '/signup?invalidUsername=true';
+        }
+
+        if(response.url.slice(-1) === '/'){
+
+            window.location.replace('./');
         }
 
         // if(response.url.slice(-4) === 'null' && response.redirected === true){

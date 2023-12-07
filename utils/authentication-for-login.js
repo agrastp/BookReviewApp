@@ -5,9 +5,8 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User.js');
 const crypto = require('crypto');
 const {hashSinglePassword} = require('./hash-password.js');
-//const {sessionSaveWithPromise} = require('../utils/session-promise-functions.js') 
 
-//https://www.passportjs.org/packages/passport-local/
+//I, Gabriel, used code from the following URL to use Passport:  https://www.passportjs.org/packages/passport-local/
 passport.use('login', new LocalStrategy(
     
     {
@@ -29,7 +28,7 @@ passport.use('login', new LocalStrategy(
               return done(null, false, { message: 'Incorrect username or password' });
             }
 
-            //https://www.passportjs.org/tutorials/password/verify/
+            //I, Gabriel, also used code from this URL to use Passport: https://www.passportjs.org/tutorials/password/verify/
             let hashedPassword = await hashSinglePassword(password, user.salt, "authentication");
 
             let validPassword = (crypto.timingSafeEqual(Buffer.from(user.password, 'hex'), hashedPassword));

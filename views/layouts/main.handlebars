@@ -20,12 +20,12 @@
             {{!-- col-3 justify-content-between --}}
             {{!-- Navigation --}}
             <nav class="navbar-item is-arrowless custom-navbar flex-item justify-center">
-                <a href="/" id="home-link" class="pl-1 pr-4">Home</a>
-                <a href="/dashboard" id="dashboard-link" class="less-padding">Dashboard</a>
+                <a href="/" id="home-link" class="pl-1 pr-4 shrinking-text">Home</a>
+                <a href="/dashboard" id="dashboard-link" class="less-padding shrinking-text">Dashboard</a>
                 {{#if loggedInUser}}
-                    <a id="login-link" href="/api/users/logout" class="custom-login-logout-button less-padding">Logout</a>
+                    <a id="login-link" href="/api/users/logout" class="custom-login-logout-button less-padding shrinking-text">Logout</a>
                 {{else}}
-                    <a id="login-link" href="/login" class="custom-login-logout-button less-padding">Login</a>
+                    <a id="login-link" href="/login" class="custom-login-logout-button less-padding shrinking-text">Login</a>
                 {{/if}}
             </nav>
         </section>
@@ -34,9 +34,15 @@
         </section>
         <section id="welcome-bar" class="medium-text is-flex-grow-1">
             {{#if loggedInUser}}
-                <p id="welcome-line" class="mt-0 pt-0">Welcome, <b>{{{loggedInUser.username}}}</b></p>
+                <p id="welcome-line" class="mt-0 pt-0 welcome-text">Welcome, <b>{{{loggedInUser.username}}}</b></p>
             {{/if}}
+            
         </section>
+        {{#if invalidRedirection}}
+            <section id="redirection-error" class="has-text-centered mt-3 has-background-danger-dark box has-text-light">
+                <p id="redirection-error-message">{{invalidRedirection}}</p>
+            </section>        
+        {{/if}}
         {{!-- Logo Image --}}
         
 

@@ -12,9 +12,19 @@ router.get('/', async (req, res) => {
             order: [['title', 'ASC']],
         });
         const books = bookData.map((book) => book.get({ plain: true }));
+
+        let invalidRedirection = undefined;
+
+        if(req.query.invalidRedirection === "true"){
+
+            invalidRedirection = "You have attempted an invalid redirection.  This isn't allowed."
+
+            console.log(invalidRedirection);
+        }
       
         res.render('homepage', {
             books, 
+            invalidRedirection,
             loggedInUser: req.session.loggedInUser
         }); 
         
@@ -63,7 +73,21 @@ router.get('/book/:id', async (req, res) => {
 
             newElement = false;
 
-            reviewInQuestion = getReviewToBeEdited(req, book.reviews);
+            let reviewId = req.query.reviewId
+
+            reviewInQuestion = getReviewToBeEdited(reviewId, book.reviews);
+
+            console.log("reviewInQuestion", reviewInQuestion);
+
+            if((reviewInQuestion === null )){
+
+                res.redirect( "/?invalidRedirection=true");
+                
+            
+            } else if(reviewInQuestion.user_id !== req.session.loggedInUser.id){
+
+                res.redirect( "/?invalidRedirection=true");
+            }
         }
 
         if(req.query.valid === "false"){
@@ -80,7 +104,6 @@ router.get('/book/:id', async (req, res) => {
             errorMessage,
             loggedInUser: req.session.loggedInUser,
 
-            // Villy: copy pasted this line from my challenge, need to further investigate what it does
             user_id: req.session.user_id
         });
 
@@ -163,6 +186,10 @@ router.get('/signup', async (req, res) => {
 
             errorMessage = "You must enter both the username and the password.  Try again!!";
         
+        } else if (req.query.invalidEmail === "true"){
+
+            errorMessage = "Email addresses must be entered in the format of someone@example.com, with no less than two and no" + 
+                           "more than six characters for the top-level domain.  Try again."
         }
         
         res.render('login-signup', {
@@ -198,7 +225,7 @@ router.get('/dashboard', baseAuthenticateWhetherLoggedIn, async (req, res) => {
         if(req.query.editReview === "true"){
 
             displayCudForm = true;
-            reviewInQuestion = getReviewToBeEdited(req, user.reviews);
+            reviewInQuestion = getReviewToBeEdited(req.query.reviewId, user.reviews);
             user.reviews = [reviewInQuestion];
         }
 

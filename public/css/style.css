@@ -1,6 +1,5 @@
 *{
     box-sizing: border-box;
-    overflow: auto;
 }
 
 /* Imported font family */
@@ -26,7 +25,7 @@
 
 #welcome-line {
     padding: 10px;
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: darkgreen;
 }
 /* Header with Logo */
@@ -184,7 +183,7 @@
 }
 
 .custom-left-column {
-    width: 20%;
+    width: 12%;
 }
 
 .custom-reviews-box {
@@ -248,6 +247,10 @@ so I defined my own custom class. */
     text-align: center;
 }
 
+.overflow-hidden{
+    overflow: hidden;
+}
+
 html{
 
     min-width: 150px;
@@ -269,8 +272,28 @@ a {
     justify-content: center;
 }
 
+.welcome-text {
+
+    font-size: 0.5em;
+}
+
+@media screen and (max-width: 1023px){
+
+    .custom-container{
+
+        margin-left: auto;
+        margin-right: auto;
+        width: 90vw;
+    }
+
+    .margin-container {
+
+        margin: 0 0.5em
+    }
+}
+
 @media screen and (max-width: 576px) {
-    .book-images {
+    /* .book-images {
         margin: 3%;
         display: flex;
         flex-direction: row;
@@ -291,7 +314,7 @@ a {
     
     .custom-left-column {
         width: 20%;
-    }
+    } */
     /* -------------------------------------------- */
     .custom-left-column {
         display: none;
@@ -300,16 +323,6 @@ a {
     .display-below-576 {
         display: inline;
         font-weight: bolder;
-    }
-}
-
-@media screen and (max-width: 1023px){
-
-    .custom-container{
-
-        margin-left: auto;
-        margin-right: auto;
-        width: 90vw;
     }
 }
 
@@ -325,11 +338,16 @@ a {
 
         margin-top: 1.25em;
     }
+
+    #welcome-line {
+
+        font-size: 4vw;
+    }
 }
 
 @media screen and (max-width: 375px) {
 
-    a {
+    .shrinking-text {
         font-size: 5vw;
     }
 
@@ -344,6 +362,17 @@ a {
         padding-left: 0.25em;
         padding-right: 0.25em;
         font-size: 5vw;
+    }
+
+    .flex-column-mobile {
+
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .no-left-padding-mobile{
+
+        padding-left: 0;
     }
     
 }
