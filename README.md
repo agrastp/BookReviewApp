@@ -26,7 +26,7 @@ This application is live on Heroku.  To use it, please use the link in the **Usa
 
 ## Usage
 
-To use our live application, please use the following link to Heroku: (https://aqueous-plateau-25751-d19cd5ff4a3b.herokuapp.com/)[https://aqueous-plateau-25751-d19cd5ff4a3b.herokuapp.com/].
+To use our live application, please use the following link to Heroku: [https://aqueous-plateau-25751-d19cd5ff4a3b.herokuapp.com/](https://aqueous-plateau-25751-d19cd5ff4a3b.herokuapp.com/).
 
 Here is a screenshot of the application: ![A Screenshot of Book Buzz](./public/images/Book_Buzz_Application_Screenshot.JPG)
 
