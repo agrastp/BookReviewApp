@@ -1,3 +1,4 @@
+/* This function takes a review ID and an array of reviews and finds the review that the ID belongs to/*/ 
 function getReviewToBeEdited(reviewId, bookReviews){
 
     reviewInQuestion = bookReviews.find(function(review){

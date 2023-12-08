@@ -1,13 +1,12 @@
-{{!-- this page shows the single book that you clicked on, 
-and inside you can see all the reviews that has been posted by other users --}}
+{{!-- this handlebars template shows the single book that you clicked the button to view the reviews for, 
+and inside you can see all the reviews that have been posted by other users. --}}
 <section class="custom-single-book-box has-background-link-light pt-2">
     <section class="custom-m-30 single-book columns">
-        <div >
+        <section>
             <figure class="book-images" class="image is-3by2">
                 <img src="{{{image}}}" class="has-ratio" width="150" height="250">
             </figure>
-        </div>
-
+        </section>
         <aside class="column single-book-lineheight">
             <h2><strong>Title: </strong>{{title}}</h2>
             <h2><strong>Author: </strong>{{author}}</h2>
@@ -17,7 +16,6 @@ and inside you can see all the reviews that has been posted by other users --}}
         </aside>
     </section>
 </section>
-
 {{#if loggedInUser}}
     {{#unless displayCudForm}}
         <section class="custom-add-review-button">
@@ -28,15 +26,12 @@ and inside you can see all the reviews that has been posted by other users --}}
     {{/unless}}
 {{else}}
     <section class="has-text-centered">
-        <p>You must <a href="/login">log in</a>before leaving a review.</p>
+        <p class="larger-text">You must <a href="/login">log in</a>before leaving a review.</p>
     </section>
 {{/if}}
-
-
 {{#unless displayCudForm}}
     {{> review}}
 {{/unless}}
-
 {{#if displayCudForm}}
     {{> create-update-delete-review}}
 {{/if}}

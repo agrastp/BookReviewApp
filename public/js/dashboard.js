@@ -1,8 +1,15 @@
+/* This page contains the front-end javascript logic for when the edit*/
 let editReviewButtons = document.querySelectorAll("[id^='edit-button']")
 let deleteReviewButtons = document.querySelectorAll("[id^='delete-button']");
 
 editReviewButtons.forEach((button) => button.addEventListener("click", editReview));
 deleteReviewButtons.forEach((button) => button.addEventListener("click", deleteReview));
+
+if(window.location.href.endsWith('false')){
+
+    let cudErrorMessage = document.getElementById("cud-error-message");
+    cudErrorMessage.scrollIntoView({behavior: "smooth"});
+}
 
 function editReview(event){
 

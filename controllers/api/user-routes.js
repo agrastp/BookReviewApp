@@ -1,11 +1,7 @@
 const router = require('express').Router();
-//const { User } = require('../../models');
 const passport = require('../../utils/authentication-for-login.js');
 const passport2 = require('../../utils/authentication-for-signup.js');
-const bcrypt = require('bcrypt');
-const { sessionSaveWithPromise } = require('../../utils/session-promise-functions.js');
-//const crypto = require('crypto');
-
+const  sessionSaveWithPromise = require('../../utils/session-promise-save.js');
 
 // CREATE new user
 router.post('/signup', passport2.authenticate('signup'), async (req, res) => {
@@ -26,19 +22,7 @@ router.post('/signup', passport2.authenticate('signup'), async (req, res) => {
 
             res.redirect('/');
         }
-        // const dbUserData = await User.create({
-        //   username: req.body.username,
-        //   email: req.body.email,
-        //   password: req.body.password,
-        // });
 
-        // // Set up sessions with a 'loggedIn' variable set to `true`
-        // req.session.save(() => {
-        //   req.session.loggedIn = true;
-        //   req.session.loggedInUsername = req.body.username;
-
-        //   res.status(200).json(dbUserData);
-        // });
     } catch (err) {
 
         console.log(err);
@@ -48,7 +32,7 @@ router.post('/signup', passport2.authenticate('signup'), async (req, res) => {
 
 
 
-// Login
+// Logs the user into the website
 router.post('/login', passport.authenticate('login'), async  (req, res) => {
 
     try {
@@ -86,7 +70,9 @@ router.get('/logout', (req, res) => {
 
         res.redirect(301, '/login');
     });
+
   } else {
+
     res.status(404).end();
   }
 });

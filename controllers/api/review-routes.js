@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const Review = require('../../models/Review');
+const baseAuthenticateWhetherLoggedIn = require('../../utils/basic-authentication.js');
 
 //Creates a new review
-router.post('/', async (req, res) => {
+router.post('/', baseAuthenticateWhetherLoggedIn, async (req, res) => {
     try { 
 
 
@@ -25,7 +26,7 @@ router.post('/', async (req, res) => {
 });
 
 //Updates a review
-router.put('/:id', async (req, res) => {
+router.put('/:id', baseAuthenticateWhetherLoggedIn, async (req, res) => {
 
     try { 
 
@@ -52,7 +53,7 @@ router.put('/:id', async (req, res) => {
 });
 
 //Deletes a review by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', baseAuthenticateWhetherLoggedIn, async (req, res) => {
 
     try {
 

@@ -12,7 +12,9 @@ passport.use('login', new LocalStrategy(
     {
         passReqToCallback: true
     },
-
+    
+    /*This function validates the user's username and password.  If they match a record in the database,
+    the user is logged in.  If not, the user will be kicked back to the login page.*/
     async function(req, username, password, done) {
 
         try {
