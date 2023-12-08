@@ -7,8 +7,9 @@ if(window.location.href.endsWith('false')){
     cudErrorMessage.scrollIntoView({behavior: "smooth"});
 }
 
-// Villy: determined the ID
-const redirectToCreateReview = (event) => {
+/*This function displays the form for creating, updating, and deleting reviews 
+when the user is creating a review. */
+function redirectToCreateReview (event){
     event.preventDefault();
 
     const id = event.target.getAttribute('data');
@@ -17,6 +18,8 @@ const redirectToCreateReview = (event) => {
     document.location.href = `/book/${id}/?displayCudForm=true&newElement=true`;
 }
 
+/*This function displays the form for creating, updating, and deleting reviews 
+when the user is creating a review. */
 function displayEditDeleteForm(event){
     event.preventDefault();
 

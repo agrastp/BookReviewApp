@@ -7,7 +7,8 @@ const p = 1; // Parallelization parameter
 
 const scryptAsync = promisify(scrypt);
 
-//The Xpert Learning Assistant helped me write this function
+/*The Xpert Learning Assistant helped me write this function.  It takes
+users, hashes their passwords, and then returns the users with the hashed passwords.*/
 async function hashMultiplePasswords(userData){
 
     
@@ -23,6 +24,8 @@ async function hashMultiplePasswords(userData){
     return userData;
 }
 
+/* This function hashes a single password and hashes it, then returns it, or its 
+derived key as necessary.*/
 async function hashSinglePassword(password, salt, reasonForCallingFunction){
 
     let derivedKey = await scryptAsync(password, salt, 64, {N, r, p});

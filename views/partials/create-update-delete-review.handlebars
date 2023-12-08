@@ -1,4 +1,15 @@
-<form id="create-review-form" class="custom-add-review-form">
+{{!-- This handlebars templage is responsible for rendering the form for creating, updating, and deleting reviews. --}}
+<form id="create-review-form" class="custom-add-review-form px-5 py-5 has-background-primary-light">
+    {{#if newElement}}
+    <p class="has-text-centered"><b>Create Review</b></p>
+    {{else}}
+        {{#if dashboard}}
+            <p class="has-text-centered"><b>Update Review</b></p>
+        {{else}}
+            <p class="has-text-centered"><b>Update or Delete Review</b></p>
+        {{/if}}
+    {{/if}}
+    
     <section class="field">
         <label for="review-title" class="label">Title</label>
         <section class="control">
@@ -32,11 +43,11 @@
             {{/unless}}
         {{/if}}
     </section>
-    {{#if errorMessage}}
-        <section class="has-text-centered mt-3 has-background-danger-dark box">
-            <p id="cud-error-message" class="has-text-primary-light error-message-text">{{{errorMessage}}}</p>
-        </section>
-    {{/if}}
 </form>
+{{#if errorMessage}}
+    <section class="large-x-margin has-text-centered mt-3 has-background-danger-dark box">
+        <p id="cud-error-message" class="has-text-primary-light larger-text">{{{errorMessage}}}</p>
+    </section>
+{{/if}}
 
 <script src="/js/create-update-delete.js"></script>

@@ -1,4 +1,4 @@
-
+// This file seeds the database with the starting data from the bookData.json, reviewData.json, and userData.json files.
 const sequelize = require('../config/connection');
 const {Book, Review, User} = require('../models');
 
@@ -19,7 +19,7 @@ const seedDatabase = async () => {
     await sequelize.sync({ force: false });
 
     await User.bulkCreate(userDataWithHashedPasswords, {
-        individualHooks: true,
+        insectionidualHooks: true,
         returning: true,
     });
 

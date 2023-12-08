@@ -3,7 +3,6 @@ const { Book, Review, User } = require('../models');
 const baseAuthenticateWhetherLoggedIn = require('../utils/basic-authentication.js');
 const getReviewToBeEdited = require('../utils/get-review-to-be-edited.js');
 // Import the custom middleware
-// const withAuth = require('../utils/auth'); 
 
 // GET all books for homepage sorted by name
 router.get('/', async (req, res) => {
@@ -18,8 +17,6 @@ router.get('/', async (req, res) => {
         if(req.query.invalidRedirection === "true"){
 
             invalidRedirection = "You have attempted an invalid redirection.  This isn't allowed."
-
-            console.log(invalidRedirection);
         }
       
         res.render('homepage', {
@@ -73,20 +70,20 @@ router.get('/book/:id', async (req, res) => {
 
             newElement = false;
 
-            let reviewId = req.query.reviewId
+            if(req.query.valid !== "false"){
 
-            reviewInQuestion = getReviewToBeEdited(reviewId, book.reviews);
+                let reviewId = req.query.reviewId
 
-            console.log("reviewInQuestion", reviewInQuestion);
+                reviewInQuestion = getReviewToBeEdited(reviewId, book.reviews);
 
-            if((reviewInQuestion === null )){
+                if((reviewInQuestion === null )){
 
-                res.redirect( "/?invalidRedirection=true");
+                    res.redirect( "/?invalidRedirection=true");
                 
-            
-            } else if(reviewInQuestion.user_id !== req.session.loggedInUser.id){
+                } else if(reviewInQuestion.user_id !== req.session.loggedInUser.id){
 
-                res.redirect( "/?invalidRedirection=true");
+                    res.redirect( "/?invalidRedirection=true");
+                }
             }
         }
 
@@ -111,31 +108,6 @@ router.get('/book/:id', async (req, res) => {
 
         res.status(500).json(err);
     };
-});
-
-//GET all reviews
-router.get('/review', async (req, res) => {
-    const reviewData = await Review.findAll().catch((err) => {
-        res.json(err);
-    });
-    const reviews = reviewData.map((review) => review.get({ plain: true }));
-    res.render('all', {reviews});
-    // res.status(200).json(review);
-});
-
-// GET one review by ID
-router.get('/review/:id', async (req, res) => {
-    try{ 
-        const reviewData = await Review.findByPk(req.params.id);
-        if(!reviewData) {
-            res.status(404).json({message: 'No review with this id!'});
-            return;
-        }
-        const review = reviewData.get({ plain: true });
-        res.render('review', review);
-      } catch (err) {
-          res.status(500).json(err);
-      };     
 });
 
 //Renders the login page
@@ -210,7 +182,16 @@ router.get('/dashboard', baseAuthenticateWhetherLoggedIn, async (req, res) => {
     
     try {
 
+        let errorMessage = undefined;
+
+        if(req.query.valid === "false"){
+
+            errorMessage = `The title and content of a post must not be left blank. A post title can only contain the special characters '!', ':', '?', and '-'
+                            and can't start with those characters or end with ':' or '-'.  Try again !!!`
+        }
+
         const userData = await User.findByPk(req.session.loggedInUser.id, {
+
             order: [['createdAt', 'DESC']],
             attributes: {exclude: ['password']},
             include: [{model: Review, include: [{model: Book}]}]
@@ -236,14 +217,11 @@ router.get('/dashboard', baseAuthenticateWhetherLoggedIn, async (req, res) => {
 
         let dashboard = true;
 
-        
-
-        console.log(user);
-
         // res.set('Cache-Control', 'no-store');
         res.render('dashboard', {
             ...user,
             displayCudForm,
+            errorMessage,
             dashboard,
             reviewInQuestion,
             loggedInUser: req.session.loggedInUser,
@@ -255,13 +233,13 @@ router.get('/dashboard', baseAuthenticateWhetherLoggedIn, async (req, res) => {
     }
 });
 
+// This route renders the create, update, and delete review form.
 router.get('/create-update-delete-review/:id', baseAuthenticateWhetherLoggedIn, async (req, res) => {
     try {
-        console.log(req.params);
+
         const bookData = await Book.findByPk(req.params.id);
         
         const book = bookData.get({plain: true});
-        console.log(book);
 
         res.render('create-update-delete-review', {
             book: book,

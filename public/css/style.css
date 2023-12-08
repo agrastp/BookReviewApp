@@ -38,8 +38,6 @@
 }
 
 .center-image img {
-    /* max-width: 25%;
-    height: 25%; */
     padding: 0px 40px 40px;
 }
 
@@ -90,11 +88,12 @@
     justify-content: space-between;
 }
 
-/* Review Form */
+/* Form to add, update and delete reviews */
 .custom-add-review-form {
-    margin: 5%;
+    margin: 4em;
     display: flex;
     flex-direction: column;
+    box-shadow: 0px 10px 6px -6px #cccccc; 
 }
 
 .custom-create-new-review-form {
@@ -103,7 +102,13 @@
     justify-content: flex-end;
 }
 
-.error-message-text {
+.large-x-margin{
+
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.larger-text {
 
     font-size: 1.25em;
 }
@@ -132,6 +137,7 @@
     margin: 30px;
 }
 
+/* This class is for the section holding the button that brings up the Create Review form. */
 .custom-add-review-button {
     display: flex;
     flex-direction: column;
@@ -203,6 +209,8 @@
     margin-bottom: 10px;
 }
 
+/* This class is for the section holding the buttons to edit and delete reviews.  These are
+the buttons that aren't on the dashboard. */
 .custom-edit-delete-field {
     display: flex;
     flex-direction: row;
@@ -224,16 +232,10 @@
     display: none;
 }
 
-.fit-content {
-
-    width: 100%;
-    padding: auto;
-}
 
 /* For some reason, Bulma's flex classes didn't seem to be working the way I wanted,
 so I defined my own custom class. */
 .is-flex-column{
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,13 +244,8 @@ so I defined my own custom class. */
 }
 
 .flex-item {
-
     width: 100%;
     text-align: center;
-}
-
-.overflow-hidden{
-    overflow: hidden;
 }
 
 html{
@@ -280,19 +277,18 @@ a {
 @media screen and (max-width: 1023px){
 
     .custom-container{
-
         margin-left: auto;
         margin-right: auto;
         width: 90vw;
     }
 
     .margin-container {
-
         margin: 0 0.5em
     }
 }
 
 @media screen and (max-width: 576px) {
+
     /* to make the title, author, and etc. stick to their description */
     .custom-left-column {
         display: none;
@@ -336,20 +332,17 @@ a {
     }
 
     .resizing-button{
-
         padding-left: 0.25em;
         padding-right: 0.25em;
         font-size: 5vw;
     }
 
     .flex-column-mobile {
-
         flex-direction: column;
         text-align: left;
     }
 
     .no-left-padding-mobile{
-
         padding-left: 0;
     }
     

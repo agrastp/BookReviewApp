@@ -72,22 +72,6 @@ async function signupFormHandler(event) {
 
     if (username && password) {
 
-        if(email){
-
-            let emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-            let validEmail = emailRegex.test(email);
-
-            if(!validEmail){
-                
-                window.location.replace('/signup?invalidEmail=true');
-                return;
-            }
-        
-        } else {
-
-            email = null;
-        }
-
         const response = await fetch('api/users/signup', {
             method: 'POST',
             body: JSON.stringify({username, email, password}),
@@ -107,6 +91,11 @@ async function signupFormHandler(event) {
         if(response.url.endsWith('invalidUsername=true') === true && response.redirected === true){
 
             document.location.href = '/signup?invalidUsername=true';
+        }
+
+        if(response.url.endsWith('invalidEmail=true') === true && response.redirected === true){
+
+            document.location.href = '/signup?invalidEmail=true';
         }
 
         if(response.url.slice(-1) === '/'){

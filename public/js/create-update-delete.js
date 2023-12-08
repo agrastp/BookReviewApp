@@ -7,6 +7,12 @@ let deleteReviewButton = document.getElementById("delete-review-button");
 let trimmedTitle = undefined;
 let trimmedContent = undefined;
 
+if(document.location.href.includes("displayCudForm=true")){
+
+    let createReviewForm = document.getElementById("create-review-form");
+    createReviewForm.scrollIntoView({behavior: "smooth"});
+}
+
 
 //Listeners for buttons
 if(createReviewButton){
@@ -82,8 +88,17 @@ async function updateReview(event){
 
         } else {
 
-            document.location.href = `/book/${event.target.dataset.bookId}?displayCudForm=true&newElement=false&reviewId=${event.target.dataset.reviewId}&valid=false`
+            if(document.location.href.includes("/dashboard")){
+
+                document.location.href = `/dashboard/?editReview=true&reviewId=${event.target.dataset.reviewId}&valid=false`;
+            
+            } else if(document.location.href.includes("/book")){
+
+                document.location.href = `/book/${event.target.dataset.bookId}?displayCudForm=true&newElement=false&reviewId=${event.target.dataset.reviewId}&valid=false`
+            }
         }
+
+            
 
     } catch (error){
 

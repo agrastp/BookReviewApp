@@ -1,3 +1,5 @@
+
+/*This file defines the relationships between the sequelize models.*/
 const User = require('./User');
 const Book = require('./Book');
 const Review = require('./Review');

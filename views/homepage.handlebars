@@ -1,5 +1,5 @@
-{{!-- Seeded Book Information --}}
-
+{{!-- This handlebars template renders all of the books that are currently in the database, along with their
+associated information, such as descriptions. --}}
 <section id="books-section" class="container margin-container">
     {{#each books as |book|}}
     <section id="{{{generateUuid}}}" class="custom-books-section box has-background-link-light" class="flex-container">
@@ -11,12 +11,12 @@
         </section>
         
         <section class="book-lists custom-columns">
-            <div class="custom-left-column">
-                <li>Title:</li>
+            <section class="custom-left-column">
+                <li>Title: </li>
                 <li>Author: </li>
                 <li>Genre: </li>
-                <li>Pages:</li>
-            </div>
+                <li>Pages: </li>
+            </section>
 
             <aside class="custom-right-column">
                 <li class="book-title"><span class="display-below-576">Title: </span>{{book.title}}</li>
