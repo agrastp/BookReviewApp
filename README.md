@@ -3,15 +3,20 @@
 ## Description
   
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <br>
-Book Review is an application for readers to give review for well known books.  Readers will create a protected login account with username and password to get full access to the application. Then a list of books will be provided for users to leave a review.  Readers are also able to browse the application to see all reviews of the books provided on the site.  When finished, users are able to log out.  <br>
+Book Buzz is an application for readers to give review for well known books.  Readers will create a protected login account with username and password to get full access to the application. Then a list of books will be provided for users to leave a review.  Readers are also able to browse the application to see all reviews of the books provided on the site.  When finished, users are able to log out.
+
+Our motivation for building this project was to get experience with developing a full-stack application in a group setting.  We built this project so that we could learn how to develop back-end routes, front-end handlebars views, and regular javascript all at once.  This project solves the problem of a user needing a free website to submit book reviews on for other people to view.  In this project, we learned how to resolve GitHub merge conflicts, and how to successfully collaborate with each other to build a significant application.
 
 ## Table of Contents 
   
 - [Description](#description)
+- [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
 - [Contributing](#contributing)
+- [Features](#features)
+- [Tests](#tests)
 - [Questions](#questions)
 
 
