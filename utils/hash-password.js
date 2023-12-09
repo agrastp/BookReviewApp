@@ -13,7 +13,7 @@ async function hashMultiplePasswords(userData){
 
     
 
-    for(let counter = 0; counter < userData.length; counter++){
+    for (let counter = 0; counter < userData.length; counter++){
 
         let derivedKey = await scryptAsync(userData[counter].password, userData[counter].salt, 64, {N, r, p});
         let derivedKeyHex = derivedKey.toString('hex');
@@ -30,7 +30,7 @@ async function hashSinglePassword(password, salt, reasonForCallingFunction){
 
     let derivedKey = await scryptAsync(password, salt, 64, {N, r, p});
 
-    if(reasonForCallingFunction === "authentication"){
+    if (reasonForCallingFunction === "authentication"){
 
         return derivedKey;
     

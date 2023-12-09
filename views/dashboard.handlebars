@@ -2,7 +2,7 @@
 <section class="container">
     {{#if reviews}}
         {{#each reviews as |review|}}
-            <section data="{{review.book.id}}" class="box custom-reviews-box custom-container has-background-primary-light">
+            <section id="dashboard-book-review-{{{review.id}}}" data="{{review.book.id}}" class="box custom-reviews-box custom-container has-background-primary-light">
                 <p class="custom-review-createdOn"><strong>{{review.book.title}}</strong>'s review created on {{format_date createdAt}}</p>
                 <h2 class="custom-user-review-title">{{review.title}}</h2>
                 <p>{{review.content}}</p>
@@ -24,4 +24,4 @@
         </section>
     {{/if}}
 </section>
-<script src="/js/dashboard.js"></script>
+<script type="module" src="/js/dashboard.js"></script>

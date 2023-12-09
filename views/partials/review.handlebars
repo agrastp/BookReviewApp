@@ -2,7 +2,7 @@
 a single book and reviews.--}}
 <section class="custom-book-reviews-section">
     {{#each reviews as |review|}}
-        <section class="box custom-review-box has-background-primary-light">
+        <section id="single-book-review-{{{review.id}}}" class="box custom-review-box has-background-primary-light">
             <h2 class="custom-review-title"><strong>{{review.title}}</strong></h2>
             <p>{{review.content}}</p>
             <p class="custom-review-name-date">Posted by <span class="custom-text-light-blue">{{review.user.username}}</span> on {{format_date createdAt}}</p>
