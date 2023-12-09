@@ -1,3 +1,5 @@
+import {potentiallyScrollToReview} from './helpers/potentially-scroll-to-review.js';
+
 /* This page contains the front-end javascript logic for when the edit*/
 let editReviewButtons = document.querySelectorAll("[id^='edit-button']")
 let deleteReviewButtons = document.querySelectorAll("[id^='delete-button']");
@@ -10,6 +12,8 @@ if(window.location.href.endsWith('false')){
     let cudErrorMessage = document.getElementById("cud-error-message");
     cudErrorMessage.scrollIntoView({behavior: "smooth"});
 }
+
+potentiallyScrollToReview();
 
 function editReview(event){
 

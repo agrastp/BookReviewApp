@@ -26,7 +26,7 @@ and inside you can see all the reviews that have been posted by other users. --}
     {{/unless}}
 {{else}}
     <section class="has-text-centered">
-        <p class="larger-text">You must <a href="/login">log in</a>before leaving a review.</p>
+        <p class="larger-text">You must<a href="/login">log in</a>before leaving a review.</p>
     </section>
 {{/if}}
 {{#unless displayCudForm}}
@@ -38,5 +38,5 @@ and inside you can see all the reviews that have been posted by other users. --}
 
 {{!-- Villy: I added this if statement to make it so user cannot interact with the single book page if not logged in --}}
 {{#if loggedInUser}}
-<script src="/js/book.js"></script>
+<script type="module" src="/js/book.js"></script>
 {{/if}}

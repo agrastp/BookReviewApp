@@ -7,10 +7,10 @@ let deleteReviewButton = document.getElementById("delete-review-button");
 let trimmedTitle = undefined;
 let trimmedContent = undefined;
 
-if(document.location.href.includes("displayCudForm=true")){
+if((document.location.href.includes("displayCudForm=true")) || (document.location.href.includes("editReview=true"))){
 
-    let createReviewForm = document.getElementById("create-review-form");
-    createReviewForm.scrollIntoView({behavior: "smooth"});
+    let createEditReviewForm = document.getElementById("create-review-form");
+    createEditReviewForm.scrollIntoView({behavior: "smooth"});
 }
 
 
@@ -49,7 +49,7 @@ async function createReview(event){
                 body: requestBody
             });
 
-            handleRedirection(event, response);
+            handleRedirection(event, response, "Create");
     
         } else {
     
@@ -84,7 +84,7 @@ async function updateReview(event){
                 body: requestBody
             });
 
-            handleRedirection(event, response);
+            handleRedirection(event, response, "Update");
 
         } else {
 
@@ -121,7 +121,7 @@ async function deleteReview(event){
             headers: {"Content-Type": "application/json"},
         });
 
-        handleRedirection(event, response);
+        handleRedirection(event, response, "Delete");
     
     } catch(error){
 
@@ -130,7 +130,24 @@ async function deleteReview(event){
 }
 
 //Directs to either login or homepage
-function handleRedirection(event, response){
+async function handleRedirection(event, response, actionType){
+
+    let appendToRedirection = undefined;
+
+    if(actionType === "Update"){
+
+        appendToRedirection = `/?cuReviewId=${event.target.dataset.reviewId}`
+    
+    } else if (actionType === "Create"){
+
+        actualReview = await response.json();
+
+        appendToRedirection = `/?cuReviewId=${actualReview.id}`
+
+    } else {
+
+        appendToRedirection = "";
+    }
 
     if(response.url.slice(-5) === "login"){
 
@@ -138,11 +155,11 @@ function handleRedirection(event, response){
 
     } else if(document.location.href.includes("/dashboard")){
 
-        document.location.href = "/dashboard";
+        document.location.href = "/dashboard" + appendToRedirection;
     
     } else{
 
-        document.location.href = `/book/${event.target.dataset.bookId}`;
+        document.location.href = `/book/${event.target.dataset.bookId}` + appendToRedirection;
     }
 }
 

@@ -55,41 +55,37 @@ router.get('/book/:id', async (req, res) => {
         }
         const book = bookData.get({ plain: true });
 
-        if(req.query.displayCudForm === "true"){
+        if (req.query.displayCudForm === "true"){
 
             displayCudForm = true;
         }
 
         
 
-        if(req.query.newElement === "true"){
+        if (req.query.newElement === "true"){
 
             newElement = true;
 
-        } else if(req.query.newElement === "false"){
+        } else if (req.query.newElement === "false"){
 
             newElement = false;
 
-            if(req.query.valid !== "false"){
+            console.log("inside 3");
 
-                let reviewId = req.query.reviewId
+            let reviewId = req.query.reviewId
+            let loggedInUserId = req.session.loggedInUser.id
 
-                reviewInQuestion = getReviewToBeEdited(reviewId, book.reviews);
+            console.log("reviewId", reviewId);
+            console.log("loggedInUserId", loggedInUserId);
 
-                if((reviewInQuestion === null )){
+            reviewInQuestion = getReviewToBeEdited(req, res, book.reviews);
 
-                    res.redirect( "/?invalidRedirection=true");
-                
-                } else if(reviewInQuestion.user_id !== req.session.loggedInUser.id){
-
-                    res.redirect( "/?invalidRedirection=true");
-                }
-            }
+            console.log("review in question", reviewInQuestion);
         }
 
         if(req.query.valid === "false"){
 
-            errorMessage = `The title and content of a post must not be left blank. A post title can only contain the special characters '!', ':', '?', and '-'
+            errorMessage = `The title and content of a review must not be left blank. A review title can only contain the special characters '!', ':', '?', and '-'
                             and can't start with those characters or end with ':' or '-'.  Try again !!!`
         }
         
@@ -160,8 +156,8 @@ router.get('/signup', async (req, res) => {
         
         } else if (req.query.invalidEmail === "true"){
 
-            errorMessage = "Email addresses must be entered in the format of test@example.com, with no less than two and no" + 
-                           "more than six characters for the top-level domain.  Try again."
+            errorMessage = "Email addresses must be entered in the format of test@example.com, with no less than two and no " + 
+                           "more than six characters for the top-level domain.  Try again!!"
         }
         
         res.render('login-signup', {
@@ -186,7 +182,7 @@ router.get('/dashboard', baseAuthenticateWhetherLoggedIn, async (req, res) => {
 
         if(req.query.valid === "false"){
 
-            errorMessage = `The title and content of a post must not be left blank. A post title can only contain the special characters '!', ':', '?', and '-'
+            errorMessage = `The title and content of a review must not be left blank. A review title can only contain the special characters '!', ':', '?', and '-'
                             and can't start with those characters or end with ':' or '-'.  Try again !!!`
         }
 
@@ -206,7 +202,8 @@ router.get('/dashboard', baseAuthenticateWhetherLoggedIn, async (req, res) => {
         if(req.query.editReview === "true"){
 
             displayCudForm = true;
-            reviewInQuestion = getReviewToBeEdited(req.query.reviewId, user.reviews);
+            reviewInQuestion = getReviewToBeEdited(req, res, user.reviews);
+
             user.reviews = [reviewInQuestion];
         }
 
@@ -229,6 +226,7 @@ router.get('/dashboard', baseAuthenticateWhetherLoggedIn, async (req, res) => {
         })
     }
     catch (err) {
+        console.log("error", err);
         res.status(500).json(err);
     }
 });

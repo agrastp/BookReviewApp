@@ -1,3 +1,5 @@
+import {potentiallyScrollToReview} from './helpers/potentially-scroll-to-review.js';
+
 let addReviewButton = document.getElementById('add-new-review-button');
 let editReviewButtons = document.querySelectorAll("[id^='edit-delete-review-button']");
 
@@ -6,6 +8,8 @@ if(window.location.href.endsWith('false')){
     let cudErrorMessage = document.getElementById("cud-error-message");
     cudErrorMessage.scrollIntoView({behavior: "smooth"});
 }
+
+potentiallyScrollToReview();
 
 /*This function displays the form for creating, updating, and deleting reviews 
 when the user is creating a review. */
