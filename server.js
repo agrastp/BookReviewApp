@@ -27,9 +27,6 @@ const sess = {
     rolling: true,
     cookie: {
         maxAge: 1000 * 60 * 30,
-        httpOnly: true,
-        secure: false,
-        sameSite: 'strict',
     },
     resave: false,
     saveUninitialized: true,
@@ -57,7 +54,7 @@ app.use(routes);
 
 
 //Connects to the database before starting Express.js server
-sequelize.sync({force: true}).then(() => {
+sequelize.sync({force: false}).then(() => {
     app.listen(PORT, () => {
         console.log(`Now listening at http://localhost:${PORT}`);
     })
