@@ -17,7 +17,6 @@ function redirectToCreateReview (event){
     event.preventDefault();
 
     const id = event.target.getAttribute('data');
-    console.log(id);
 
     document.location.href = `/book/${id}/?displayCudForm=true&newElement=true`;
 }

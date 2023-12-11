@@ -70,17 +70,13 @@ router.get('/book/:id', async (req, res) => {
 
             newElement = false;
 
-            console.log("inside 3");
-
-            let reviewId = req.query.reviewId
-            let loggedInUserId = req.session.loggedInUser.id
-
-            console.log("reviewId", reviewId);
-            console.log("loggedInUserId", loggedInUserId);
 
             reviewInQuestion = getReviewToBeEdited(req, res, book.reviews);
 
-            console.log("review in question", reviewInQuestion);
+            if(reviewInQuestion === undefined && req.query.valid !== "false"){
+
+                return;
+            }
         }
 
         if(req.query.valid === "false"){
@@ -203,6 +199,11 @@ router.get('/dashboard', baseAuthenticateWhetherLoggedIn, async (req, res) => {
 
             displayCudForm = true;
             reviewInQuestion = getReviewToBeEdited(req, res, user.reviews);
+
+            if(reviewInQuestion === undefined && req.query.valid !== "false"){
+
+                return;
+            }
 
             user.reviews = [reviewInQuestion];
         }

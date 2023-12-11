@@ -57,8 +57,6 @@ passport.use('signup', new LocalStrategy(
                 let validEmail = emailRegex.test(email);
     
                 if(!validEmail){
-
-                    console.log("inside");
                     
                     req.res.redirect('/signup?invalidEmail=true');
 
