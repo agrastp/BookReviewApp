@@ -73,7 +73,7 @@ router.get('/logout', (req, res) => {
 
   } else {
 
-    res.status(404).end();
+    res.redirect(301, '/login');
   }
 });
 
